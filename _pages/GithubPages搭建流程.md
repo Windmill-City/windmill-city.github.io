@@ -82,6 +82,108 @@ description: >
 - </li>
 ```
 
-* 移除 `_post` 文件夹
-* 清空 `_pages` 文件夹
+* 清理
+  * 移除 `_post` 文件夹
+  * 清空 `_pages` 文件夹
+
 * 新的文档放置在 `_pages` 文件夹中
+
+* 增加 Metadata 显示
+
+```diff
+diff --git a/_includes/body.html b/_includes/body.html
+index 9207a8d..da86951 100644
+--- a/_includes/body.html
++++ b/_includes/body.html
+@@ -1,23 +1,38 @@
+ <div class="page-wrapper" tabindex="-1" role="main">
+     {% if page.cover %}
+-        <img src="{{ page.cover }}"
+-             width="100%"
+-             height="{{ page.cover_height | default: '100%' }}"
+-             alt="{{ page.title | escape }}"
+-             style="object-fit: cover;"
+-        />
++    <img src="{{ page.cover }}" width="100%" height="{{ page.cover_height | default: '100%' }}"
++        alt="{{ page.title | escape }}" style="object-fit: cover;" />
+     {% endif %}
+ 
+     <div class="page-inner">
+         <div id="book-search-results">
+             <div class="search-noresults">
+-                <section class="normal markdown-section">
+-                    {% if page.title %}
+-                        <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
+-                    {% else %}
+-                        <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
+-                    {% endif %}
++                {% if page.title %}
++                <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
++                {% else %}
++                <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
++                {% endif %}
+
++                <ul class="post-meta">
++                    <li>
++                        {% if page.author %}
++                        <a>{{ page.author | escape }}</a>
++                        {% else %}
++                        <a>{{ site.author | escape }}</a>
++                        {% endif %}
++                    </li>
++                    {% if page.date %}
++                    <li>
++                        <a>{{ page.date | date: "%Y-%m-%d" }}</a>
++                    </li>
++                    {% endif %}
++                    {% if page.category %}
++                    <li>
++                        <a>{{ page.category | escape }}</a>
++                    </li>
++                    {% endif %}
++                </ul>
++                <section class="normal markdown-section">
+                     {{ content }}
+                 </section>
+             </div>
+@@ -25,4 +40,4 @@
+             {%- include search.html -%}
+         </div>
+     </div>
+-</div>
++</div>
+```
+
+```diff
+diff --git a/assets/gitbook/custom.css b/assets/gitbook/custom.css
+index 9879063..8d120ac 100644
+--- a/assets/gitbook/custom.css
++++ b/assets/gitbook/custom.css
+@@ -52,6 +52,26 @@
+     max-width: {{ site.page_width | default: '800px' }};
+ }
+
++.post-meta {
++  margin-top: -0.5em;
++  padding: 0;
++  color: #999;
++  font-size: .92857em;
++}
++
++.post-meta li {
++  display: inline-block;
++  margin: 0 8px 0 0;
++  padding-left: 12px;
++  border-left: 1px solid #EEE;
++}
++
++.post-meta li:first-child {
++  margin-left: 0;
++  padding-left: 0;
++  border: none;
++}
++
+ .back-to-top {
+     right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 25px);
+ }
+```
