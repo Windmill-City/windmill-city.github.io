@@ -92,9 +92,8 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         }
 
         // Direct actions to share
-        $.each(SITES, function(sideId, site) {
-            if (!sideId) return;
-            if (!opts[sideId]) return;
+        $.each(SITES, function(siteId, site) {
+            if (!opts[siteId]) return;
 
             var onClick = site.onClick;
 
