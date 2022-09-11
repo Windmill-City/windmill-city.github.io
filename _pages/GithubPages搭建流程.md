@@ -1,6 +1,5 @@
 ---
 title: 搭建 Github Pages
-author: Windmill_City
 date: 2022-09-11
 category: Jekyll
 layout: post
