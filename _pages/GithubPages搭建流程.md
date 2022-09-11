@@ -188,7 +188,7 @@ index 9879063..8d120ac 100644
  }
 ```
 
-* Bugs fixs
+* 修复 `favicon` 路径错误
 
 ```diff
 diff --git a/_config.yml b/_config.yml
@@ -206,6 +206,11 @@ index 12438c5..b6a9ff2 100644
  markdown:         kramdown
 diff --git a/assets/gitbook/gitbook-plugin-sharing/buttons.js b/assets/gitbook/gitbook-plugin-sharing/buttons.js
 index f384b99..9a3c7c9 100644
+```
+
+* 修复 `sideId undefined` 错误(此错误导致 `回到顶部按钮` 不能正确出现)
+
+```diff
 --- a/assets/gitbook/gitbook-plugin-sharing/buttons.js
 +++ b/assets/gitbook/gitbook-plugin-sharing/buttons.js
 @@ -92,8 +92,8 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
