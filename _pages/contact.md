@@ -1,9 +1,8 @@
 ---
 title: Contact
-author: Tao He
-date: 2022-02-05
+date: 2022-09-11
 category: Jekyll
 layout: post
 ---
 
-This is an contact page.
+邮箱: `1449182174@qq.com`
