@@ -2,7 +2,7 @@ require([
     'gitbook',
     'jquery'
 ], function(gitbook, $) {
-    gitbook.events.on('page.change', function() {
+    gitbook.events.on('start', function() {
         var back_to_top_button = ['<div class="back-to-top"><i class="fa fa-arrow-up"></i></div>'].join("");
         $(".page-wrapper").append(back_to_top_button)
     
