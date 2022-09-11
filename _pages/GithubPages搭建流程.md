@@ -81,3 +81,7 @@ description: >
 -     </a>
 - </li>
 ```
+
+* 移除 `_post` 文件夹
+* 清空 `_pages` 文件夹
+* 新的文档放置在 `_pages` 文件夹中
