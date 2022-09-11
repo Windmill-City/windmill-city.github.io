@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 # 搭建 Github Pages
 
 ## 目标
