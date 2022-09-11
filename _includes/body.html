@@ -7,33 +7,32 @@
     <div class="page-inner">
         <div id="book-search-results">
             <div class="search-noresults">
+                {% if page.title %}
+                <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
+                {% else %}
+                <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
+                {% endif %}
+
+                <ul class="post-meta">
+                    <li>
+                        {% if page.author %}
+                        <a href=".">{{ page.author | escape }}</a>
+                        {% else %}
+                        <a href=".">{{ site.author | escape }}</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if page.date %}
+                        <a href=".">{{ page.date }}</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if page.category %}
+                        <a href=".">{{ page.category | escape }}</a>
+                        {% endif %}
+                    </li>
+                </ul>
                 <section class="normal markdown-section">
-                    {% if page.title %}
-                    <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
-                    {% else %}
-                    <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
-                    {% endif %}
-
-                    <ul class="post-meta">
-                        <li>
-                            {% if page.author %}
-                            <a href=".">{{ page.author | escape }}</a>
-                            {% else %}
-                            <a href=".">{{ site.author | escape }}</a>
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if page.date %}
-                            <a href=".">{{ page.date }}</a>
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if page.category %}
-                            <a href=".">{{ page.category | escape }}</a>
-                            {% endif %}
-                        </li>
-                    </ul>
-
                     {{ content }}
                 </section>
             </div>
