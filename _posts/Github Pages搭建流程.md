@@ -1,4 +1,4 @@
-# Github Pages搭建流程
+# 搭建 Github Pages
 
 ## 目标
 
@@ -11,7 +11,7 @@
 |Repo|Repository; 代码仓库|
 |README| Read me; 项目说明|
 
-## 流程
+## 搭建流程
 
 * 物色 Jekyll 主题
 主题模板网站 <http://jekyllthemes.org/>
@@ -65,3 +65,14 @@ description: >
 * 点击 <https://windmill-city.github.io/> 查看页面效果
 ![FinalPage](/assets/FinalPage.png)
 观察到, 页面正确显示, 至此 `Github Pages` 搭建完成
+
+* 移除 `Fork it now`
+  * `Repo`->`_includes`->`toc-data.html`
+
+```diff
+- <li>
+-     <a href="https://github.com/sighingnow/jekyll-gitbook/fork" target="blank" class="gitbook-link">
+-         Fork it Now!
+-     </a>
+- </li>
+```
