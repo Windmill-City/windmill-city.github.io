@@ -187,3 +187,35 @@ index 9879063..8d120ac 100644
      right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 25px);
  }
 ```
+
+* Bugs fixs
+
+```diff
+diff --git a/_config.yml b/_config.yml
+index 12438c5..b6a9ff2 100644
+--- a/_config.yml
++++ b/_config.yml
+@@ -22,7 +22,7 @@ toc:
+   h_max: 3
+
+ # customize the link favicon in header, will be {{site.baseurl}}/{{site.favicon_path}}
+-favicon_path:     /assets/gitbook/images/favicon.ico
++favicon_path:     assets/gitbook/images/favicon.ico
+
+ # markdown render engine.
+ markdown:         kramdown
+diff --git a/assets/gitbook/gitbook-plugin-sharing/buttons.js b/assets/gitbook/gitbook-plugin-sharing/buttons.js
+index f384b99..9a3c7c9 100644
+--- a/assets/gitbook/gitbook-plugin-sharing/buttons.js
++++ b/assets/gitbook/gitbook-plugin-sharing/buttons.js
+@@ -92,8 +92,8 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
+         }
+
+         // Direct actions to share
+-        $.each(SITES, function(sideId, site) {
+-            if (!opts[sideId]) return;
++        $.each(SITES, function(siteId, site) {
++            if (!opts[siteId]) return;
+
+             var onClick = site.onClick;
+```
