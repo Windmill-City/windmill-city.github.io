@@ -32,25 +32,6 @@
                     <a href=".">{{ site.title | escape }}</a>
                     {% endif %}
                 </h1>
-                <ul class="post-meta">
-                    <li>
-                        {% if page.author %}
-                        <a href=".">{{ page.author | escape }}</a>
-                        {% else %}
-                        <a href=".">{{ site.author | escape }}</a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if page.date %}
-                        <a href=".">{{ page.date }}</a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if page.category %}
-                        <a href=".">{{ page.category | escape }}</a>
-                        {% endif %}
-                    </li>
-                </ul>
             </div>
 
             <div class="body-inner">
