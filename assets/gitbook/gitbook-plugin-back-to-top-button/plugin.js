@@ -25,7 +25,7 @@ require([
         $('.back-to-top').on('click', function () { 
             $('.book-body,.body-inner').animate({
                 scrollTop: 0
-            }, 800);
+            }, 200);
             return false;
         });
     });
