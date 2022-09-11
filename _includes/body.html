@@ -16,21 +16,21 @@
                 <ul class="post-meta">
                     <li>
                         {% if page.author %}
-                        <a href=".">{{ page.author | escape }}</a>
+                        <a>{{ page.author | escape }}</a>
                         {% else %}
-                        <a href=".">{{ site.author | escape }}</a>
+                        <a>{{ site.author | escape }}</a>
                         {% endif %}
                     </li>
+                    {% if page.date %}
                     <li>
-                        {% if page.date %}
-                        <a href=".">{{ page.date }}</a>
-                        {% endif %}
+                        <a>{{ page.date | date: "%Y-%m-%d" }}</a>
                     </li>
+                    {% endif %}
+                    {% if page.category %}
                     <li>
-                        {% if page.category %}
-                        <a href=".">{{ page.category | escape }}</a>
-                        {% endif %}
+                        <a>{{ page.category | escape }}</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <section class="normal markdown-section">
                     {{ content }}
