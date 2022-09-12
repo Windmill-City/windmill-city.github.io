@@ -6,8 +6,3 @@ description: >-
   简单的规则构造复杂的系统
 baseurl: ""
 url: "https://windmill-city.github.io/"
-
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
