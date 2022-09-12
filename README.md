@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 明理
+title: 主页
 permalink: /
 ---
 
