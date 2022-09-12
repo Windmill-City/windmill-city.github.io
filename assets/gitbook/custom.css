@@ -52,26 +52,6 @@
     max-width: {{ site.page_width | default: '800px' }};
 }
 
-.post-meta {
-  margin-top: -0.5em;
-  padding: 0;
-  color: #999;
-  font-size: .92857em;
-}
-
-.post-meta li {
-  display: inline-block;
-  margin: 0 8px 0 0;
-  padding-left: 12px;
-  border-left: 1px solid #EEE;
-}
-
-.post-meta li:first-child {
-  margin-left: 0;
-  padding-left: 0;
-  border: none;
-}
-
 .back-to-top {
     right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 25px);
 }

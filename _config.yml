@@ -61,3 +61,5 @@ plugins:
   - jekyll-feed
   - jekyll-readme-index
   - jemoji
+
+extra_css: assets/page_metadata.css
