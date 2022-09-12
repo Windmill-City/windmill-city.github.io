@@ -1,0 +1,13 @@
+# Site settings
+title: 明理
+author: Windmill-City
+email: 1449182174@qq.com
+description: >-
+  简单的规则构造复杂的系统
+baseurl: ""
+url: "https://windmill-city.github.io/"
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
