@@ -63,4 +63,4 @@ plugins:
   - jemoji
 
 extra_css:
-  - assets/page_metadata.css
+  - assets/page-metadata.css
