@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Gitbook
+title: 明理
 permalink: /
 ---
 
