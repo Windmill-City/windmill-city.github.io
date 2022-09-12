@@ -26,11 +26,11 @@
                                 <a>{{ page.date | date: "%Y-%m-%d" }}</a>
                             </li>
                         {% endif %}
-                        {% if page.category %}
+                        {% for category in page.categories %}
                             <li>
-                                <a>{{ page.category | escape }}</a>
+                                <a>{{ category | escape }}</a>
                             </li>
-                        {% endif %}
+                        {% endfor %}
                     </ul>
                 </section>
                 <section class="normal markdown-section">
