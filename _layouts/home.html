@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ page.title }}·{{ site.title }}</title>
+</head>
+
+<body>
+    <div class="page">
+        <!--Title-->
+        <h1>{{ page. title }}</h1>
+        <!--Metadata-->
+        <header class="meta">
+            <ul>
+                <!--Author-->
+                <li class="author">
+                    {{ page.author | default: site.author }}
+                </li>
+                <!--Date-->
+                {% if page.date %}
+                <li class="date">
+                    {{ page.date | date: "%Y-%m-%d" }}
+                </li>
+                {% endif %}
+                <!--Categories-->
+                <ul class="categories">
+                    {% for category in page.categories %}
+                    <li>
+                        {{ category }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        </header>
+        <hr>
+        <!--Markdown Content-->
+        <section class="content">
+            {{ page.content }}
+        </section>
+    </div>
+</body>
+
+</html>
