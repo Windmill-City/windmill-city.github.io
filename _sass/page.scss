@@ -1,3 +1,25 @@
 .page {
-    background-color: #eee;
+    .meta {
+        ul {
+            margin-top: -0.6em;
+            padding: 0;
+            color: #999;
+
+            li {
+                display: inline-block;
+                margin-right: 8px;
+                padding-left: 12px;
+                border-left: 1px solid #EEE;
+            }
+
+            .author {
+                padding-left: 0;
+                border: none;
+            }
+
+            .categories {
+                display: inline-block;
+            }
+        }
+    }
 }
