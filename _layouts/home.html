@@ -15,13 +15,13 @@
             <li class="home"><a href="/">{{ site.title }}</a></li>
             <!--Table of Pages-->
             <ul class="pages">
-                {% for _page in site.pages %}
+                {%- for _page in site.pages -%}
                 {% comment %}Skip page with empty title{% endcomment %}
-                {% unless _page.title %}{% continue %}{% endunless %}
+                {%- unless _page.title -%}{% continue %}{%- endunless -%}
                 {% comment %}Skip home page{% endcomment %}
-                {% if _page.url == "/" %}{% continue %}{% endif %}
+                {%- if _page.url == "/" -%}{% continue %}{%- endif -%}
                 <li><a href="{{ _page.url }}">{{ _page.title }}</a></li>
-                {% endfor %}
+                {%- endfor -%}
             </ul>
             <!--Table of Posts-->
             <ul class="posts">

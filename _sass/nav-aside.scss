@@ -1,0 +1,44 @@
+.nav-aside {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+
+    &::after {
+        content: "";
+        display: block;
+        margin: 8px 0;
+        border-top: 1px solid #eee;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &::before {
+            content: "";
+            display: block;
+            margin: 8px 0;
+            border-top: 1px solid #eee;
+        }
+
+        &:empty::before {
+            display: none;
+        }
+    }
+
+    a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #363636;
+        font-size: 14px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
