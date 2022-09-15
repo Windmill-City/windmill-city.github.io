@@ -6,6 +6,7 @@
     <!--CSS Style Sheets-->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/github-markdown.css" />
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.css" />
 </head>
 
 <body>
@@ -31,6 +32,28 @@
             </ul>
         </ul>
     </div>
+    <div class="main">
+        <!--Nav-Top-->
+        <div class="nav-top">
+            <a>{{ page.title }}</a>
+        </div>
+        <!--Prev Page-->
+        <div class="nav-prev">
+            {% if page.previous %}
+            <a href="{{ page.previous.url }}" aria-label="{{ page.previous.title }}">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            {% endif %}
+        </div>
+        <!--Next Page-->
+        <div class="nav-next">
+            {% if page.next or site.posts.first %}
+            <a href="{{ page.next.url | default: site.posts.first.url }}"
+                aria-label="{{ page.next.title | default: site.posts.first.title }}">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            {% endif %}
+        </div>
     <div class="page">
         <!--Title-->
         <h1>{{ page.title }}</h1>
@@ -61,6 +84,7 @@
         <section class="markdown-body">
             {{ content }}
         </section>
+    </div>
     </div>
 </body>
 
