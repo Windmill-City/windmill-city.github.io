@@ -40,17 +40,17 @@
         <div class="page-wrapper">
             <!--Prev Page-->
             <div class="nav-prev">
-                {% if page.previous %}
-                <a href="{{ page.previous.url }}" aria-label="{{ page.previous.title }}">
+                {% if page.next %}
+                <a href="{{ page.next.url }}" aria-label="{{ page.next.title }}">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 {% endif %}
             </div>
             <!--Next Page-->
             <div class="nav-next">
-                {% if page.next or site.posts.first %}
-                <a href="{{ page.next.url | default: site.posts.first.url }}"
-                    aria-label="{{ page.next.title | default: site.posts.first.title }}">
+                {% if page.previous or site.posts.first != page %}
+                <a href="{{ page.previous.url | default: site.posts.first.url }}"
+                    aria-label="{{ page.previous.title | default: site.posts.first.title }}">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 {% endif %}
