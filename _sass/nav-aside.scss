@@ -4,6 +4,7 @@
     height: calc(100vh - 2px);
     overflow: auto;
 
+    .toc::after,
     &::after {
         content: "";
         display: block;
@@ -25,6 +26,24 @@
 
         &:empty::before {
             display: none;
+        }
+
+        .active {
+            color: #0969da;
+        }
+
+        .toc {
+            li {
+                margin-left: 10px;
+            }
+
+            ul::before,
+            li::before {
+                content: "";
+                display: block;
+                margin: 0;
+                border: none;
+            }
         }
     }
 
