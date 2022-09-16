@@ -1,91 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>{{ page.title }}·{{ site.title }}</title>
-    <!--CSS Style Sheets-->
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link rel="stylesheet" href="/assets/css/github-markdown.css" />
-    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css" />
-</head>
+{% include head.html %}
 
 <body>
-    <div class="nav-aside">
-        <ul>
-            <!--Home page-->
-            <li class="home"><a href="/">{{ site.title }}</a></li>
-            <!--Table of Pages-->
-            <ul class="pages">
-                {%- for _page in site.pages -%}
-                {% comment %}Skip page with empty title{% endcomment %}
-                {%- unless _page.title -%}{% continue %}{%- endunless -%}
-                {% comment %}Skip home page{% endcomment %}
-                {%- if _page.url == "/" -%}{% continue %}{%- endif -%}
-                <li><a href="{{ _page.url }}">{{ _page.title }}</a></li>
-                {%- endfor -%}
-            </ul>
-            <!--Table of Posts-->
-            <ul class="posts">
-                {% for post in site.posts %}
-                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </ul>
-    </div>
+    {% include nav-aside.html %}
     <div class="main">
-        <!--Nav-Top-->
-        <div class="nav-top">
-            <a>{{ page.title }}</a>
-        </div>
+        {% include nav-top.html %}
         <div class="page-wrapper">
-            <!--Prev Page-->
-            <div class="nav-prev">
-                {% if page.next %}
-                <a href="{{ page.next.url }}" aria-label="{{ page.next.title }}">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                {% endif %}
-            </div>
-            <!--Next Page-->
-            <div class="nav-next">
-                {% if page.previous or site.posts.first != page %}
-                <a href="{{ page.previous.url | default: site.posts.first.url }}"
-                    aria-label="{{ page.previous.title | default: site.posts.first.title }}">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                {% endif %}
-            </div>
-    <div class="page">
-        <!--Title-->
-        <h1>{{ page.title }}</h1>
-        <!--Metadata-->
-        <header class="meta">
-            <ul>
-                <!--Author-->
-                <li class="author">
-                    {{ page.author | default: site.author }}
-                </li>
-                <!--Date-->
-                {% if page.date %}
-                <li class="date">
-                    {{ page.date | date: "%Y-%m-%d" }}
-                </li>
-                {% endif %}
-                <!--Categories-->
-                <ul class="categories">
-                    {% for category in page.categories %}
-                    <li>
-                        {{ category }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </ul>
-        </header>
-        <!--Markdown Content-->
-        <section class="markdown-body">
-            {{ content }}
-        </section>
-    </div>
+            {% include nav-page.html %}
+            {% include page.html %}
         </div>
     </div>
 </body>
