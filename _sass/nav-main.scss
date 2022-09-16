@@ -1,8 +1,8 @@
 .main {
     $nav-top-height: 50px;
     display: flex;
-    width: 100%;
     flex-direction: column;
+    width: 100%;
 
     .nav-top {
         display: flex;
@@ -63,6 +63,7 @@
         }
 
         .page {
+            max-height: calc(100vh - #{$nav-top-height});
             overflow: auto;
         }
     }
