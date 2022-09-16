@@ -1,15 +1,8 @@
-html {
-    height: 100%;
-
-    body {
-        height: 100%;
-
-        display: grid;
-        grid-template-columns: 300px auto;
-        margin: 0;
-    }
+body {
+    display: flex;
+    margin: 0;
 }
 
-.page {
-    width: 800px;
+.main {
+    flex: 1
 }
