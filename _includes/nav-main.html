@@ -1,0 +1,25 @@
+<div class="nav-main">
+    <!--Nav-Top-->
+    <div class="nav-top">
+        <a href="#top">{{ page.title }}</a>
+    </div>
+    <div class="nav-page">
+        <!--Prev Page-->
+        <div class="nav-prev">
+            {% if page.next %}
+            <a href="{{ page.next.url }}" aria-label="{{ page.next.title }}">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            {% endif %}
+        </div>
+        <!--Next Page-->
+        <div class="nav-next">
+            {% if page.previous or (site.posts.first != page and site.posts.last != page) %}
+            <a href="{{ page.previous.url | default: site.posts.first.url }}"
+                aria-label="{{ page.previous.title | default: site.posts.first.title }}">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

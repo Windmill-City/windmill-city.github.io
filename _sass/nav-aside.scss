@@ -3,7 +3,7 @@
     border: 1px solid #eee;
     width: 300px;
     min-width: 300px;
-    max-width: 300px;
+    min-width: 300px;
 
     &::after {
         content: "";

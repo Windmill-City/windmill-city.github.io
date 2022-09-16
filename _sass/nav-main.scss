@@ -1,4 +1,4 @@
-.main {
+.nav-main {
     $nav-top-height: 50px;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,8 @@
             line-height: $nav-top-height;
             font-weight: 400;
             color: #787878;
-            opacity: 0;
+            text-decoration: none;
+            opacity: 1;
 
             &:hover {
                 opacity: 1;
@@ -25,10 +26,9 @@
         }
     }
 
-    .page-wrapper {
+    .nav-page {
         display: flex;
         justify-content: space-between;
-        height: 100%;
 
         .nav-prev {
             width: 80px;
@@ -60,27 +60,6 @@
         .nav-next {
             @extend .nav-prev;
             order: 2;
-        }
-
-        .page {
-            max-height: calc(100vh - #{$nav-top-height});
-            padding: 0 6px;
-            overflow: auto;
-
-            &::-webkit-scrollbar {
-                width: 6px;
-                height: 6px;
-            }
-
-            &::-webkit-scrollbar-track {
-                border-radius: 10px;
-                background-color: gainsboro;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                border-radius: 10px;
-                background-color: darkgray;
-            }
         }
     }
 }
