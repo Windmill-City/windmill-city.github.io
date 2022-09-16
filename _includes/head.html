@@ -4,6 +4,17 @@
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <link rel="stylesheet" href="/assets/css/github-markdown.css" />
     <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css" />
+    <link href="/assets/css/viewer.css" rel="stylesheet">
     <!--favicon-->
     <link rel="icon" href="/assets/img/favicon.ico">
+    <!--js-->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/viewer.js"></script>
+    <script src="/assets/js/jquery-viewer.js"></script>
+    <script>
+        let Viewer;
+        $(document).ready(function(){
+            Viewer = $("#page-content").viewer();
+        })
+    </script>
 </head>
