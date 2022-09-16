@@ -6,3 +6,9 @@ description: >-
   简单的规则构造出复杂的系统
 baseurl: ""
 url: "https://windmill-city.github.io/"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "post"
