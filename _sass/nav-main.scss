@@ -8,6 +8,7 @@
         height: $nav-top-height;
         background-color: #7878780a;
         opacity: 0;
+        transition: opacity .2s ease;
         position: sticky;
         top: 0;
 
@@ -23,7 +24,7 @@
 
         &:hover {
             opacity: 1;
-            transition: opacity .4s;
+            transition: opacity .2s ease;
         }
     }
 
@@ -47,11 +48,12 @@
                 font-size: 40px;
                 text-decoration: none;
                 opacity: 0.2;
+                transition: opacity .2s ease;
 
                 &:hover {
                     opacity: 1;
                     background-color: #7878780a;
-                    transition: opacity .2s;
+                    transition: opacity .2s ease;
                 }
 
                 &:active {

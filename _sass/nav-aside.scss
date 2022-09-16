@@ -2,12 +2,34 @@
     background-color: #fafafa;
     border: 1px solid #eee;
     height: calc(100vh - 2px);
+    overflow: auto;
 
     &::after {
         content: "";
         display: block;
         margin: 8px 0;
         border-top: 1px solid #eee;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-track {
+        background-color: gainsboro;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: darkgray;
+        -webkit-transition: all 1s;
+        transition: all 1s;
     }
 
     ul {

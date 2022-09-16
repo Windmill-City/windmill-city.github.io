@@ -16,3 +16,18 @@ body {
         flex: 1;
     }
 }
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: gainsboro;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: darkgray;
+}
