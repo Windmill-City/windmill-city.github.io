@@ -1,19 +1,18 @@
 body {
     display: flex;
     margin: 0;
-}
 
-.main {
-    width: 100%;
+    .nav-aside {
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
 
-    .nav-main,
-    .page {
-        position: relative;
+        align-self: flex-start;
+        position: sticky;
         top: 0;
-        left: 0;
     }
 
     .nav-main {
-        z-index: 2;
+        flex-grow: 1;
     }
 }

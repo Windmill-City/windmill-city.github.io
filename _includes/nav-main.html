@@ -12,6 +12,8 @@
             </a>
             {% endif %}
         </div>
+        <!--Page-->
+        {% include page.html %}
         <!--Next Page-->
         <div class="nav-next">
             {% if page.previous or (site.posts.first != page and site.posts.last != page) %}
