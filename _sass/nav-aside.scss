@@ -3,7 +3,6 @@
     border: 1px solid #eee;
     height: calc(100vh - 2px);
     overflow: auto;
-    padding-bottom: 50px;
 
     .toc::after,
     &::after {
@@ -11,6 +10,10 @@
         display: block;
         margin: 8px 0;
         border-top: 1px solid #eee;
+    }
+
+    &::after{
+        margin-bottom: 100px;
     }
 
     ul {
