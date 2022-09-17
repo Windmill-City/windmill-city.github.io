@@ -16,3 +16,4 @@ defaults:
 plugins:
   - jekyll-spaceship
   - jekyll-seo-tag
+  - jekyll-sitemap
