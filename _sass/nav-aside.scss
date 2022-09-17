@@ -12,7 +12,8 @@
         border-top: 1px solid #eee;
     }
 
-    &::after{
+    &::after {
+        // Extra space for showing the last item
         margin-bottom: 100px;
     }
 
