@@ -21,6 +21,11 @@
                 border: none;
             }
 
+            .last-modified::before {
+                content: '\f044';
+                font-family: "FontAwesome";
+            }
+
             .categories {
                 display: inline-block;
             }

@@ -16,4 +16,8 @@ defaults:
 plugins:
   - jekyll-spaceship
   - jekyll-seo-tag
+  - jekyll-last-modified-at
   - jekyll-sitemap
+
+last-modified-at:
+    date-format: '%Y-%m-%d'

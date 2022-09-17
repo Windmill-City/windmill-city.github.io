@@ -3,6 +3,7 @@ gem "jekyll", "~> 4.2.2"
 group :jekyll_plugins do
   gem 'jekyll-spaceship'
   gem 'jekyll-seo-tag'
+  gem "jekyll-last-modified-at"
   gem 'jekyll-sitemap'
 end
 
