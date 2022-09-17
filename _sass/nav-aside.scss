@@ -3,6 +3,7 @@
     border: 1px solid #eee;
     height: calc(100vh - 2px);
     overflow: auto;
+    padding-bottom: 50px;
 
     .toc::after,
     &::after {
