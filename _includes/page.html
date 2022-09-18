@@ -1,26 +1,26 @@
-<div class="page">
+<div id="page">
     <!--Title-->
     <h1>{{ page.title }}</h1>
     <!--Metadata-->
-    <header class="meta">
+    <header id="meta">
         <ul>
             <!--Author-->
-            <li class="author">
+            <li id="author">
                 {{ page.author | default: site.author }}
             </li>
             <!--Date-->
             {% if page.date %}
-            <li class="date">
+            <li id="date">
                 {{ page.date | date: "%Y-%m-%d" }}
             </li>
             {% endif %}
             {% if page.last_modified_at and page.last_modified_at != page.date %}
-            <li class="last-modified">
+            <li id="last-modified">
                 {{ page.last_modified_at | date: "%Y-%m-%d" }}
             </li>
             {% endif %}
             <!--Categories-->
-            <ul class="categories">
+            <ul id="categories">
                 {% for category in page.categories %}
                 <li>
                     {{ category }}

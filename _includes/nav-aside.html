@@ -1,9 +1,9 @@
-<div class="nav-aside">
+<div id="nav-aside">
     <ul>
         <!--Home page-->
-        <li class="home"><a href="/">{{ site.title }}</a></li>
+        <li id="home"><a href="/">{{ site.title }}</a></li>
         <!--Table of Pages-->
-        <ul class="pages">
+        <ul id="pages">
             {%- for _page in site.pages -%}
             {% comment %}Skip page with empty title{% endcomment %}
             {%- unless _page.title -%}{% continue %}{%- endunless -%}
@@ -13,11 +13,11 @@
             {%- endfor -%}
         </ul>
         <!--Table of Posts-->
-        <ul class="posts">
+        <ul id="posts">
             {% for post in site.posts %}
             {% if post == page %}
             <li><a class="active" href="#top">{{ post.title }}</a></li>
-            {% include toc.html html=content class='toc' %}
+            {% include toc.html html=content id='toc' %}
             {% else %}
             <li><a href="{{ post.url }}">{{ post.title }}</a></li>
             {% endif %}

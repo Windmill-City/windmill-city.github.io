@@ -1,9 +1,9 @@
-.nav-main {
+#nav-main {
     $nav-top-height: 50px;
     display: flex;
     flex-direction: column;
 
-    .nav-top {
+    #nav-top {
         display: flex;
         height: $nav-top-height;
         background-color: #7878780a;
@@ -28,12 +28,12 @@
         }
     }
 
-    .nav-page {
+    #nav-page {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
 
-        .nav-prev {
+        #nav-prev {
             width: 80px;
             max-width: 80px;
             position: sticky;
@@ -48,7 +48,6 @@
                 font-size: 40px;
                 text-decoration: none;
                 opacity: 0.2;
-                transition: opacity .2s ease;
 
                 &:hover {
                     opacity: 1;
@@ -63,8 +62,8 @@
             }
         }
 
-        .nav-next {
-            @extend .nav-prev;
+        #nav-next {
+            @extend #nav-prev;
         }
     }
 }

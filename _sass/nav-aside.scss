@@ -1,10 +1,10 @@
-.nav-aside {
+#nav-aside {
     background-color: #fafafa;
     border: 1px solid #eee;
     height: calc(100vh - 2px);
     overflow: auto;
 
-    .toc::after,
+    #toc::after,
     &::after {
         content: "";
         display: block;
@@ -37,7 +37,7 @@
             color: #0969da;
         }
 
-        .toc {
+        #toc {
             li {
                 margin-left: 10px;
             }

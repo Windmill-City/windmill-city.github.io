@@ -1,9 +1,9 @@
-.page {
+#page {
     width: 800px;
     // Extra space for showing the last item
     padding-bottom: 50px;
 
-    .meta {
+    #meta {
         ul {
             margin-top: -0.6em;
             padding: 0;
@@ -16,27 +16,27 @@
                 border-left: 1px solid #EEE;
             }
 
-            .author {
+            #author {
                 padding-left: 0;
                 border: none;
             }
 
-            .last-modified::before {
+            #last-modified::before {
                 content: '\f044';
                 font-family: "FontAwesome";
             }
 
-            .categories {
+            #categories {
                 display: inline-block;
             }
         }
     }
 
-    .gd {
+    #gd {
         background-color: rgb(255, 236, 236);
     }
 
-    .gi {
+    #gi {
         background-color: rgb(234, 255, 234);
     }
 
