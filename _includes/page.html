@@ -14,9 +14,11 @@
                 {{ page.date | date: "%Y-%m-%d" }}
             </li>
             {% endif %}
-            {% if page.last_modified_at and page.last_modified_at != page.date %}
+            {% assign lastMod = page.last_modified_at | date: "%Y-%m-%d" %}
+            {% assign publish = page.date | date: "%Y-%m-%d" %}
+            {% if publish != lastMod %}
             <li id="last-modified">
-                {{ page.last_modified_at | date: "%Y-%m-%d" }}
+                {{ lastMod }}
             </li>
             {% endif %}
             <!--Categories-->
