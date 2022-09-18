@@ -23,7 +23,7 @@
             <ul id="categories">
                 {% for category in page.categories %}
                 <li>
-                    {{ category }}
+                    <a href="/category/{{ category }}">{{ category }}</a>
                 </li>
                 {% endfor %}
             </ul>

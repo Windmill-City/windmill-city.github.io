@@ -28,6 +28,15 @@
 
             #categories {
                 display: inline-block;
+
+                a {
+                    color: #999;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
             }
         }
     }
