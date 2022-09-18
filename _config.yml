@@ -23,3 +23,5 @@ plugins:
 jekyll-archives:
   enabled:
   - categories
+
+timezone: Asia/Shanghai
