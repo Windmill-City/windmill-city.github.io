@@ -20,9 +20,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-archives
 
-last-modified-at:
-    date-format: '%Y-%m-%d'
-
 jekyll-archives:
   enabled:
   - categories
