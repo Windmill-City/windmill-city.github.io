@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Nuklear入门 | 明理</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="Nuklear入门">
+<meta name="author" content="Windmill-City">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="上节: 使用GLFW构建一个窗口">
+<meta property="og:description" content="上节: 使用GLFW构建一个窗口">
+<link rel="canonical" href="https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html">
+<meta property="og:url" content="https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html">
+<meta property="og:site_name" content="明理">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-01-29T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Nuklear入门">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Windmill-City"},"dateModified":"2023-02-01T11:41:14+08:00","datePublished":"2023-01-29T00:00:00+08:00","description":"上节: 使用GLFW构建一个窗口","headline":"Nuklear入门","mainEntityOfPage":{"@type":"WebPage","@id":"https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html"},"url":"https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!--CSS Style Sheets-->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
+    <link href="/assets/css/viewer.css" rel="stylesheet">
+    <!--favicon-->
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <!--js-->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/viewer.js"></script>
+    <script src="/assets/js/jquery-viewer.js"></script>
+    <script>
+        let Viewer;
+        $(document).ready(function () {
+            Viewer = $("#page-content").viewer();
+        })
+    </script>
+</head>
+
+<body>
+    <div id="nav-aside">
+    <ul>
+        <!--Home page-->
+        <li id="home"><a href="/">明理</a></li>
+        <!--Table of Pages-->
+        <ul id="pages">
+<li><a href="/category/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li>
+<li><a href="/category/stm32/">STM32</a></li>
+<li><a href="/category/scons/">SCons</a></li>
+<li><a href="/category/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/">图形界面</a></li>
+</ul>
+        <!--Table of Posts-->
+        <ul id="posts">
+            
+            
+            <li><a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html">使用GLFW构建一个窗口</a></li>
+            
+            
+            
+            <li><a class="active" href="#top">Nuklear入门</a></li>
+            <ul id="toc">
+<li><a href="#environment">Environment</a></li>
+<li>
+<a href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6">复制文件</a><ul><li><a href="#%E6%B7%BB%E5%8A%A0-extensions">添加 <code class="language-plaintext highlighter-rouge">Extensions</code></a></li></ul>
+</li>
+<li>
+<a href="#%E5%88%9B%E5%BB%BA%E7%AA%97%E5%8F%A3">创建窗口</a><ul><li><a href="#%E4%B8%BB%E7%AA%97%E4%BD%93%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%B1%85%E4%B8%AD">主窗体初始化时居中</a></li></ul>
+</li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2%E6%8C%89%E9%92%AE">添加全屏切换按钮</a></li>
+<li><a href="#%E4%B8%AD%E6%96%87cjk%E5%AD%97%E4%BD%93%E6%98%BE%E7%A4%BA">中文(CJK)字体显示</a></li>
+</ul>
+            
+            
+            
+            <li><a href="/stm32/scons/2022/09/20/%E9%97%AA%E7%81%AF.html">CubeMX + SCons 闪灯实验</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html">手搓 Gitbook 主题</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/12/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">在本地测试个人网站</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/11/%E6%83%B3%E8%A6%81%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">想要一个个人网站</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>
+    <div id="nav-main">
+    <!--Nav-Top-->
+    <div id="nav-top">
+        <a href="#top">Nuklear入门</a>
+    </div>
+    <div id="nav-page">
+        <!--Prev Page-->
+        <div id="nav-prev">
+            
+            <a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html" aria-label="使用GLFW构建一个窗口">
+                <i id="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <!--Page-->
+        <div id="page">
+    <!--Title-->
+    <h1>Nuklear入门</h1>
+    <!--Metadata-->
+    <header id="meta">
+        <ul>
+            <!--Author-->
+            <li id="author">
+                Windmill-City
+            </li>
+            <!--Date-->
+            
+            <li id="date">
+                2023-01-29
+            </li>
+            
+            
+            
+            
+            <li id="last-modified">
+                2023-02-01
+            </li>
+            
+            <!--Categories-->
+            <ul id="categories">
+                
+                <li>
+                    <a href="/category/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2">图形界面</a>
+                </li>
+                
+            </ul>
+        </ul>
+    </header>
+    <!--Markdown Content-->
+    <section id="page-content" class="markdown-body">
+        <p>上节: <a href="https://windmill-city.github.io/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html">使用GLFW构建一个窗口</a></p>
+
+<h2 id="environment">Environment</h2>
+
+<p>软件 <a href="https://github.com/Immediate-Mode-UI/Nuklear">Nuklear</a> 版本: 4.10.5</p>
+
+<h2 id="复制文件">复制文件</h2>
+
+<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">git</span> <span class="nf">clone</span> <span class="nf">git@github.com:Immediate-Mode-UI</span><span class="nv">/Nuklear.git</span>
+</code></pre></div></div>
+
+<p>复制
+<code class="language-plaintext highlighter-rouge">nuklear.h</code>
+<code class="language-plaintext highlighter-rouge">demo</code>-<code class="language-plaintext highlighter-rouge">glfw_opengl4</code>-<code class="language-plaintext highlighter-rouge">nuklear_glfw_gl4.h</code>
+到项目<code class="language-plaintext highlighter-rouge">nuklear</code>-<code class="language-plaintext highlighter-rouge">include</code>中</p>
+
+<p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 3.18<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>nuklear<span class="p">)</span>
+
+<span class="nb">add_library</span><span class="p">(</span>nuklear INTERFACE<span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span>nuklear INTERFACE include<span class="p">)</span>
+</code></pre></div></div>
+
+<p>目录结构</p>
+
+<pre><code class="language-tree">nuklear
+│  CMakeLists.txt
+└─include
+        nuklear.h
+        nuklear_glfw_gl4.h
+</code></pre>
+
+<p>添加依赖</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/testWnd/CMakeLists.txt b/testWnd/CMakeLists.txt
+index b186812..12f94b3 100644
+</span><span class="gd">--- a/testWnd/CMakeLists.txt
+</span><span class="gi">+++ b/testWnd/CMakeLists.txt
+</span><span class="p">@@ -18,6 +18,7 @@</span> endif()
+ 
+ add_subdirectory(glfw EXCLUDE_FROM_ALL)
+ add_subdirectory(glad EXCLUDE_FROM_ALL)
+<span class="gi">+add_subdirectory(nuklear EXCLUDE_FROM_ALL)
+</span>
+ # ##############################################################################
+ # Targets
+<span class="p">@@ -25,7 +26,7 @@</span> add_subdirectory(glad EXCLUDE_FROM_ALL)
+
+ add_executable(testWnd src/main.cpp)
+ target_include_directories(testWnd PRIVATE include)
+<span class="gd">-target_link_libraries(testWnd PRIVATE glfw glad)
+</span><span class="gi">+target_link_libraries(testWnd PRIVATE glfw glad nuklear)
+</span></code></pre></div></div>
+
+<h3 id="添加-extensions">添加 <code class="language-plaintext highlighter-rouge">Extensions</code>
+</h3>
+
+<pre><code class="language-log">[main] Building folder: testWnd testWnd
+[build] Starting build
+[proc] Executing command: "C:\Program Files\CMake\bin\cmake.EXE" --build e:/Codes/IngameIME_Win32/IngameIME-Common/testWnd/build --config Debug --target testWnd -j 14 --
+[build] MSBuild version 17.4.1+9a89d02ff for .NET Framework
+[build]   glad.c
+[build]   glfw.vcxproj -&gt; E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\glfw\src\Debug\glfw3.lib
+[build]   glad.vcxproj -&gt; E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\glad\Debug\glad.lib
+[build]   main.cpp
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(286,24): error C3861: “glGetTextureHandleARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(287,5): error C3861: “glMakeTextureHandleResidentARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(300,5): error C3861: “glMakeTextureHandleNonResidentARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(436,18): error C3861: “glIsTextureHandleResidentARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(437,17): error C3861: “glMakeTextureHandleResidentARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[build] E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\nuklear\include\nuklear_glfw_gl4.h(439,13): error C3861: “glUniformHandleui64ARB”: 找不到标识符 [E:\Codes\IngameIME_Win32\IngameIME-Common\testWnd\build\testWnd.vcxproj]
+[proc] The command: "C:\Program Files\CMake\bin\cmake.EXE" --build e:/Codes/IngameIME_Win32/IngameIME-Common/testWnd/build --config Debug --target testWnd -j 14 -- exited with code: 1
+[build] Build finished with exit code 1
+</code></pre>
+
+<p>尝试编译, 遇到上面的错误, 搜索到这个结果 <a href="https://www.reddit.com/r/opengl/comments/yklf2o/glgettexturehandlearb_not_included/">glGetTextureHandleARB not included?</a></p>
+
+<p>解决方案: 生成 <code class="language-plaintext highlighter-rouge">GLAD</code> 时添加所有的 <code class="language-plaintext highlighter-rouge">Extensions</code></p>
+
+<h2 id="创建窗口">创建窗口</h2>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/testWnd/src/main.cpp b/testWnd/src/main.cpp
+index ff96351..11a4a44 100644
+</span><span class="gd">--- a/testWnd/src/main.cpp
+</span><span class="gi">+++ b/testWnd/src/main.cpp
+</span><span class="p">@@ -4,8 +4,24 @@</span>
+ #include &lt;glad/glad.h&gt;
+ #include &lt;GLFW/glfw3.h&gt;
+
++#define NK_INCLUDE_FIXED_TYPES
+<span class="gi">+#define NK_INCLUDE_STANDARD_IO
++#define NK_INCLUDE_STANDARD_VARARGS
++#define NK_INCLUDE_DEFAULT_ALLOCATOR
++#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
++#define NK_INCLUDE_FONT_BAKING
++#define NK_INCLUDE_DEFAULT_FONT
++#define NK_BUTTON_TRIGGER_ON_RELEASE
++#define NK_KEYSTATE_BASED_INPUT
++#define NK_IMPLEMENTATION
++#include &lt;nuklear.h&gt;
++#define NK_GLFW_GL4_IMPLEMENTATION
++#include &lt;nuklear_glfw_gl4.h&gt;
++
+</span> void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+
++struct nk_context* nk;
+<span class="gi">+
+</span> int main()
+ {
+     // GLFW Init Start
+<span class="p">@@ -19,7 +35,7 @@</span> int main()
+     // GLFW Init End
+ 
+     // Create Window Start
+<span class="gd">-    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+</span><span class="gi">+    GLFWwindow* window = glfwCreateWindow(800, 800, "testWnd", NULL, NULL);
+</span>     if (!window)
+     {
+         std::cout &lt;&lt; "Failed to create GLFW window" &lt;&lt; std::endl;
+<span class="p">@@ -39,17 +55,39 @@</span> int main()
+     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+     // GLAD Init End
+
++    // Nuklear Init Start
+<span class="gi">+    nk = nk_glfw3_init(window, NK_GLFW3_INSTALL_CALLBACKS, 512 * 1024, 128 * 1024);
++
++    // Load Font
++    struct nk_font_atlas* atlas;
++    nk_glfw3_font_stash_begin(&amp;atlas);
++    nk_glfw3_font_stash_end();
++    // Nuklear Init End
++
+</span>     // Event Loop
+     while (!glfwWindowShouldClose(window))
+     {
+<span class="gi">+        // Nuklear Window Start
++        nk_glfw3_new_frame();
++        if (nk_begin(nk,
++                     "main",
++                     nk_rect(800 / 2 - 300, 800 / 2 - 300, 600, 600),
++                     NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_TITLE))
++        {
++        }
++        nk_end(nk);
++        // Nuklear Window End
++
+</span>         // Background color
+<span class="gd">-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+</span><span class="gi">+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+</span>         glClear(GL_COLOR_BUFFER_BIT);
+
++        nk_glfw3_render(NK_ANTI_ALIASING_ON);
+         glfwSwapBuffers(window);
+         glfwPollEvents();
+     }
+     glfwTerminate();
+     std::exit(EXIT_SUCCESS);
+ }
+<span class="p">@@ -57,4 +95,5 @@</span> int main()
+ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+ {
+     glViewport(0, 0, width, height);
+<span class="gi">+    nk_window_set_position(nk, "main", nk_vec2(width / 2 - 300, height / 2 - 300));
+</span> }
+</code></pre></div></div>
+
+<p>实际效果</p>
+
+<p><img src="/assets/NuklearBasic.png" alt="NuklearBasic"></p>
+
+<h3 id="主窗体初始化时居中">主窗体初始化时居中</h3>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/testWnd/src/main.cpp b/testWnd/src/main.cpp
+index 11a4a44..29294b7 100644
+</span><span class="gd">--- a/testWnd/src/main.cpp
+</span><span class="gi">+++ b/testWnd/src/main.cpp
+</span><span class="p">@@ -35,7 +35,9 @@</span> int main()
+     // GLFW Init End
+
+     // Create Window Start
+<span class="gd">-    GLFWwindow* window = glfwCreateWindow(800, 800, "testWnd", NULL, NULL);
+</span><span class="gi">+    int wnd_w = 800, wnd_h = 800;
++
++    GLFWwindow* window = glfwCreateWindow(wnd_w, wnd_h, "testWnd", NULL, NULL);
+</span>     if (!window)
+     {
+         std::cout &lt;&lt; "Failed to create GLFW window" &lt;&lt; std::endl;
+<span class="p">@@ -44,7 +46,14 @@</span> int main()
+         std::exit(EXIT_FAILURE);
+     }
+     glfwMakeContextCurrent(window);
+<span class="gd">-    // Create Window End
+</span><span class="gi">+
++    // Place the window at screen center
++    {
++        int x, y, sw, sh;
++        glfwGetMonitorWorkarea(glfwGetPrimaryMonitor(), &amp;x, &amp;y, &amp;sw, &amp;sh);
++        glfwSetWindowPos(window, x + sw / 2 - wnd_w / 2, y + sh / 2 - wnd_h / 2);
++    }
++    //  Create Window End
+</span></code></pre></div></div>
+
+<h2 id="添加全屏切换按钮">添加全屏切换按钮</h2>
+
+<p><a href="https://github.com/Immediate-Mode-UI/Nuklear/wiki">Nuklear控件参考文档</a></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/testWnd/src/main.cpp b/testWnd/src/main.cpp
+index 29294b7..84e3ef7 100644
+</span><span class="gd">--- a/testWnd/src/main.cpp
+</span><span class="gi">+++ b/testWnd/src/main.cpp
+</span><span class="p">@@ -35,7 +35,7 @@</span> int main()
+     // GLFW Init End
+ 
+     // Create Window Start
+<span class="gd">-    int wnd_w = 800, wnd_h = 800;
+</span><span class="gi">+    int wnd_w = 800, wnd_h = 800, wnd_x = 0, wnd_y = 0;
+</span> 
+     GLFWwindow* window = glfwCreateWindow(wnd_w, wnd_h, "testWnd", NULL, NULL);
+     if (!window)
+<span class="p">@@ -85,6 +85,22 @@</span> int main()
+                      nk_rect(wnd_w / 2 - main_w / 2, wnd_h / 2 - main_h / 2, main_w, main_h),
+                      NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_TITLE))
+         {
+<span class="gi">+            nk_layout_row_dynamic(nk, 30, 1);
++            if (nk_button_label(nk, "Toggle Fullscreen"))
++            {
++                if (glfwGetWindowMonitor(window))
++                {
++                    glfwSetWindowMonitor(window, NULL, wnd_x, wnd_y, wnd_w, wnd_h, 0);
++                }
++                else
++                {
++                    GLFWmonitor*       monitor = glfwGetPrimaryMonitor();
++                    const GLFWvidmode* mode    = glfwGetVideoMode(monitor);
++                    glfwGetWindowPos(window, &amp;wnd_x, &amp;wnd_y);
++                    glfwGetWindowSize(window, &amp;wnd_w, &amp;wnd_h);
++                    glfwSetWindowMonitor(window, monitor, 0, 0, mode-&gt;width, mode-&gt;height, mode-&gt;refreshRate);
++                }
++            }
+</span>         }
+         nk_end(nk);
+         // Nuklear Window End
+</code></pre></div></div>
+
+<p><img src="/assets/NuklaerToggleFullscreen.png" alt="NuklaerToggleFullscreen"></p>
+
+<h2 id="中文cjk字体显示">中文(CJK)字体显示</h2>
+
+<p>支持CJK的字体: <a href="https://github.com/googlefonts/noto-cjk">https://github.com/googlefonts/noto-cjk</a></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/testWnd/CMakeLists.txt
+</span><span class="gi">+++ b/testWnd/CMakeLists.txt
+</span><span class="p">@@ -27,6 +27,9 @@</span> add_subdirectory(nuklear EXCLUDE_FROM_ALL)
+ add_executable(testWnd src/main.cpp)
+ target_include_directories(testWnd PRIVATE include)
+ target_link_libraries(testWnd PRIVATE glfw glad nuklear)
+<span class="gi">+add_custom_command(TARGET testWnd POST_BUILD
++    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_LIST_DIR}/assets $&lt;TARGET_FILE_DIR:testWnd&gt;/assets
++)
+</span></code></pre></div></div>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/testWnd/src/main.cpp b/testWnd/src/main.cpp
+index 84e3ef7..1f9a6b2 100644
+</span><span class="gd">--- a/testWnd/src/main.cpp
+</span><span class="gi">+++ b/testWnd/src/main.cpp
+</span><span class="p">@@ -10,7 +10,6 @@</span>
+ #define NK_INCLUDE_DEFAULT_ALLOCATOR
+ #define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
+ #define NK_INCLUDE_FONT_BAKING
+<span class="gd">-#define NK_INCLUDE_DEFAULT_FONT
+</span> #define NK_BUTTON_TRIGGER_ON_RELEASE
+ #define NK_KEYSTATE_BASED_INPUT
+ #define NK_IMPLEMENTATION
+<span class="p">@@ -22,6 +21,27 @@</span> void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+
+ struct nk_context* nk;
+
++/**
+<span class="gi">+ * @brief Range of commonly used CJK charactors, if there still missing charactors,
++ * refer to http://www.unicode.org/charts/ and fix the table
++ */
++// clang-format off
++
++const nk_rune ranges[] = {
++    0x0370, 0x03FF, // Greek
++    0x0020, 0x007F, // Basic Latin(ASCII)
++    0x3000, 0x303F, // CJK Symbols and Punctuation
++    0xFF00, 0xFFEF, // Halfwidth and Fullwidth Forms
++    0x4E00, 0x9FFF, // CJK Unified Ideographs (Han)
++    0x1100, 0x11FF, // Hangul Jamo
++    0xAC00, 0xD7AF, // Hangul Syllables
++    0x3040, 0x309F, // Hiragana
++    0x30A0, 0x30FF, // Katakana
++    0
++};
++
++// clang-format on
++
+</span> int main()
+ {
+     // GLFW Init Start
+<span class="p">@@ -68,9 +88,18 @@</span> int main()
+     nk = nk_glfw3_init(window, NK_GLFW3_INSTALL_CALLBACKS, 512 * 1024, 128 * 1024);
+
+     // Load Font
+<span class="gi">+    struct nk_font_config config = nk_font_config(0);
++    config.range                 = ranges;
++    /* align every character to pixel boundary (if true set oversample (1,1)) */
++    config.oversample_h          = 1;
++    config.oversample_v          = 1;
++    config.pixel_snap            = true;
++
+</span>     struct nk_font_atlas* atlas;
+     nk_glfw3_font_stash_begin(&amp;atlas);
+<span class="gi">+    struct nk_font* font = nk_font_atlas_add_from_file(atlas, "assets/fonts/NotoSansCJKsc-VF.ttf", 20, &amp;config);
+</span>     nk_glfw3_font_stash_end();
+<span class="gi">+    nk_style_set_font(nk, &amp;font-&gt;handle);
+</span>     // Nuklear Init End
+<span class="p">@@ -101,6 +134,15 @@</span> int main()
+                     glfwSetWindowMonitor(window, monitor, 0, 0, mode-&gt;width, mode-&gt;height, mode-&gt;refreshRate);
+                 }
+             }
+<span class="gi">+
++            // TextEdit
++            static char buffer[256];
++            nk_layout_row_dynamic(nk, 30, 1);
++            nk_edit_string_zero_terminated(nk,
++                                           NK_EDIT_FIELD | NK_EDIT_SIG_ENTER | NK_EDIT_GOTO_END_ON_ACTIVATE,
++                                           buffer,
++                                           sizeof(buffer),
++                                           nk_filter_default);
+</span>         }
+         nk_end(nk);
+         // Nuklear Window End
+</code></pre></div></div>
+
+<p>需要打上这个PR的Patch才能显示正确的中文字符</p>
+
+<p><a href="https://github.com/Immediate-Mode-UI/Nuklear/pull/531">https://github.com/Immediate-Mode-UI/Nuklear/pull/531</a></p>
+
+<p>需要打上这个PR才能从文本框中复制出中文字符</p>
+
+<p><a href="https://github.com/Immediate-Mode-UI/Nuklear/pull/543">https://github.com/Immediate-Mode-UI/Nuklear/pull/543</a></p>
+
+<p><img src="/assets/NuklearCJKFont.png" alt="NuklearCJKFont"></p>
+
+
+    </section>
+</div>
+        <!--Next Page-->
+        <div id="nav-next">
+            
+            <a href="/stm32/scons/2022/09/20/%E9%97%AA%E7%81%AF.html" aria-label="CubeMX + SCons 闪灯实验">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

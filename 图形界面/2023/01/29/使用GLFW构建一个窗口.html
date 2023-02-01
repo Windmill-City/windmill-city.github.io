@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用GLFW构建一个窗口 | 明理</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="使用GLFW构建一个窗口">
+<meta name="author" content="Windmill-City">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Environment">
+<meta property="og:description" content="Environment">
+<link rel="canonical" href="https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html">
+<meta property="og:url" content="https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html">
+<meta property="og:site_name" content="明理">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-01-29T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="使用GLFW构建一个窗口">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Windmill-City"},"dateModified":"2023-01-29T17:50:18+08:00","datePublished":"2023-01-29T00:00:00+08:00","description":"Environment","headline":"使用GLFW构建一个窗口","mainEntityOfPage":{"@type":"WebPage","@id":"https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html"},"url":"https://windmill-city.github.io//%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!--CSS Style Sheets-->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
+    <link href="/assets/css/viewer.css" rel="stylesheet">
+    <!--favicon-->
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <!--js-->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/viewer.js"></script>
+    <script src="/assets/js/jquery-viewer.js"></script>
+    <script>
+        let Viewer;
+        $(document).ready(function () {
+            Viewer = $("#page-content").viewer();
+        })
+    </script>
+</head>
+
+<body>
+    <div id="nav-aside">
+    <ul>
+        <!--Home page-->
+        <li id="home"><a href="/">明理</a></li>
+        <!--Table of Pages-->
+        <ul id="pages">
+<li><a href="/category/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li>
+<li><a href="/category/stm32/">STM32</a></li>
+<li><a href="/category/scons/">SCons</a></li>
+<li><a href="/category/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/">图形界面</a></li>
+</ul>
+        <!--Table of Posts-->
+        <ul id="posts">
+            
+            
+            <li><a class="active" href="#top">使用GLFW构建一个窗口</a></li>
+            <ul id="toc">
+<li><a href="#environment">Environment</a></li>
+<li>
+<a href="#getting-start">Getting Start</a><ul>
+<li><a href="#glad">Glad</a></li>
+<li><a href="#%E4%B8%BB%E7%A8%8B%E5%BA%8F">主程序</a></li>
+</ul>
+</li>
+</ul>
+            
+            
+            
+            <li><a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html">Nuklear入门</a></li>
+            
+            
+            
+            <li><a href="/stm32/scons/2022/09/20/%E9%97%AA%E7%81%AF.html">CubeMX + SCons 闪灯实验</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html">手搓 Gitbook 主题</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/12/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">在本地测试个人网站</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/11/%E6%83%B3%E8%A6%81%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">想要一个个人网站</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>
+    <div id="nav-main">
+    <!--Nav-Top-->
+    <div id="nav-top">
+        <a href="#top">使用GLFW构建一个窗口</a>
+    </div>
+    <div id="nav-page">
+        <!--Prev Page-->
+        <div id="nav-prev">
+            
+        </div>
+        <!--Page-->
+        <div id="page">
+    <!--Title-->
+    <h1>使用GLFW构建一个窗口</h1>
+    <!--Metadata-->
+    <header id="meta">
+        <ul>
+            <!--Author-->
+            <li id="author">
+                Windmill-City
+            </li>
+            <!--Date-->
+            
+            <li id="date">
+                2023-01-29
+            </li>
+            
+            
+            
+            
+            <!--Categories-->
+            <ul id="categories">
+                
+                <li>
+                    <a href="/category/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2">图形界面</a>
+                </li>
+                
+            </ul>
+        </ul>
+    </header>
+    <!--Markdown Content-->
+    <section id="page-content" class="markdown-body">
+        <h2 id="environment">Environment</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>软件</th>
+      <th>版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Windows 10 专业版 22H2</td>
+      <td>19045.2486</td>
+    </tr>
+    <tr>
+      <td>Visual Studio Community 2022 - 使用C++的桌面开发</td>
+      <td>17.4.4</td>
+    </tr>
+    <tr>
+      <td>MSVC</td>
+      <td>v143</td>
+    </tr>
+    <tr>
+      <td>Windows 10 SDK</td>
+      <td>10.0.20348.0</td>
+    </tr>
+    <tr>
+      <td>CMake</td>
+      <td>3.25.2</td>
+    </tr>
+    <tr>
+      <td>VSCode</td>
+      <td>1.74.3</td>
+    </tr>
+    <tr>
+      <td>GLFW</td>
+      <td>3.3.8</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="getting-start">Getting Start</h2>
+
+<p><a href="https://www.glfw.org/docs/latest/quick.html">GLFW-Getting-Start</a></p>
+
+<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">git</span> <span class="nf">clone</span> <span class="nf">git@github.com:glfw</span><span class="nv">/glfw.git</span>
+</code></pre></div></div>
+
+<h3 id="glad">Glad</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Glad</code>: <code class="language-plaintext highlighter-rouge">OpenGL</code> 加载代码生成器</p>
+
+<p>进入&lt;<a href="https://glad.dav1d.de">Glad</a>&gt;网站生成加载代码</p>
+
+<p>由于我们仅仅需要基础的 <code class="language-plaintext highlighter-rouge">OpenGL</code> 功能, 所以只需要选择 <code class="language-plaintext highlighter-rouge">gl</code> 的版本, 其它不变</p>
+
+<p><code class="language-plaintext highlighter-rouge">Language</code>=<code class="language-plaintext highlighter-rouge">C/C++</code>
+<code class="language-plaintext highlighter-rouge">Specification</code>=<code class="language-plaintext highlighter-rouge">OpenGL</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">API</code>
+<code class="language-plaintext highlighter-rouge">gl</code>=<code class="language-plaintext highlighter-rouge">Version 4.6</code>
+<code class="language-plaintext highlighter-rouge">gles1</code>=<code class="language-plaintext highlighter-rouge">None</code>
+<code class="language-plaintext highlighter-rouge">gles2</code>=<code class="language-plaintext highlighter-rouge">None</code>
+<code class="language-plaintext highlighter-rouge">glsc2</code>=<code class="language-plaintext highlighter-rouge">None</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">Profile</code>=<code class="language-plaintext highlighter-rouge">Compatibility</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">Extensions</code>=<code class="language-plaintext highlighter-rouge">Empty</code></p>
+
+<p>点击 <code class="language-plaintext highlighter-rouge">Generate</code> 生成加载代码, 下载 <code class="language-plaintext highlighter-rouge">glad.zip</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 3.18<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>glad<span class="p">)</span>
+
+<span class="nb">add_library</span><span class="p">(</span>glad STATIC src/glad.c<span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span>glad PUBLIC include<span class="p">)</span>
+</code></pre></div></div>
+
+<p>最终文件结构</p>
+
+<pre><code class="language-tree">glad
+│  CMakeLists.txt
+│
+├─include
+│  ├─glad
+│  │      glad.h
+│  └─KHR
+│         khrplatform.h
+└─src
+        glad.c
+</code></pre>
+
+<h3 id="主程序">主程序</h3>
+
+<p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 3.18<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>testWnd<span class="p">)</span>
+
+<span class="c1"># ##############################################################################</span>
+<span class="c1"># Find Packages</span>
+<span class="c1"># ##############################################################################</span>
+
+<span class="nb">add_subdirectory</span><span class="p">(</span>glfw EXCLUDE_FROM_ALL<span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span>glad EXCLUDE_FROM_ALL<span class="p">)</span>
+
+<span class="c1"># ##############################################################################</span>
+<span class="c1"># Targets</span>
+<span class="c1"># ##############################################################################</span>
+
+<span class="nb">add_executable</span><span class="p">(</span>testWnd src/main.cpp<span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span>testWnd PRIVATE include<span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span>testWnd PRIVATE glfw glad<span class="p">)</span>
+</code></pre></div></div>
+
+<p>&lt;<a href="https://learnopengl-cn.github.io/01%20Getting%20started/03%20Hello%20Window">LearnOpenGL-窗口</a>&gt;</p>
+
+<p>根据以上教程编写代码, 构建最基础的窗口</p>
+
+<p><code class="language-plaintext highlighter-rouge">main.cpp</code></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;glad/glad.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;GLFW/glfw3.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">framebuffer_size_callback</span><span class="p">(</span><span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// GLFW Init Start</span>
+    <span class="n">glfwInit</span><span class="p">();</span>
+    <span class="n">glfwWindowHint</span><span class="p">(</span><span class="n">GLFW_CONTEXT_VERSION_MAJOR</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">glfwWindowHint</span><span class="p">(</span><span class="n">GLFW_CONTEXT_VERSION_MINOR</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">glfwWindowHint</span><span class="p">(</span><span class="n">GLFW_OPENGL_PROFILE</span><span class="p">,</span> <span class="n">GLFW_OPENGL_CORE_PROFILE</span><span class="p">);</span>
+<span class="cp">#if defined(__APPLE__)
+</span>    <span class="n">glfwWindowHint</span><span class="p">(</span><span class="n">GLFW_OPENGL_FORWARD_COMPAT</span><span class="p">,</span> <span class="n">GL_TRUE</span><span class="p">);</span>
+<span class="cp">#endif
+</span>    <span class="c1">// GLFW Init End</span>
+
+    <span class="c1">// Create Window Start</span>
+    <span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span> <span class="o">=</span> <span class="n">glfwCreateWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="s">"LearnOpenGL"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">window</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Failed to create GLFW window"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">glfwTerminate</span><span class="p">();</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">glfwMakeContextCurrent</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+    <span class="c1">// Create Window End</span>
+
+    <span class="c1">// GLAD Init Start</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gladLoadGLLoader</span><span class="p">((</span><span class="n">GLADloadproc</span><span class="p">)</span><span class="n">glfwGetProcAddress</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Failed to initialize GLAD"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">glfwSetFramebufferSizeCallback</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">framebuffer_size_callback</span><span class="p">);</span>
+    <span class="c1">// GLAD Init End</span>
+
+    <span class="c1">// Event Loop</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">glfwWindowShouldClose</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Background color</span>
+        <span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.2</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.3</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.3</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span>
+        
+        <span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+        <span class="n">glfwPollEvents</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">glfwTerminate</span><span class="p">();</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_SUCCESS</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">framebuffer_size_callback</span><span class="p">(</span><span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>编译运行</p>
+
+<p><img src="/assets/BasicWindow.png" alt="BasicWindow"></p>
+
+<p>至此完成GLFW窗口构建</p>
+
+
+    </section>
+</div>
+        <!--Next Page-->
+        <div id="nav-next">
+            
+            <a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html" aria-label="Nuklear入门">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

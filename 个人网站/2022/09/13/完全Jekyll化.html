@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>手搓 Gitbook 主题 | 明理</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="手搓 Gitbook 主题">
+<meta name="author" content="Windmill-City">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="起因">
+<meta property="og:description" content="起因">
+<link rel="canonical" href="https://windmill-city.github.io//%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html">
+<meta property="og:url" content="https://windmill-city.github.io//%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html">
+<meta property="og:site_name" content="明理">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-09-13T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="手搓 Gitbook 主题">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Windmill-City"},"dateModified":"2022-09-18T16:26:38+08:00","datePublished":"2022-09-13T00:00:00+08:00","description":"起因","headline":"手搓 Gitbook 主题","mainEntityOfPage":{"@type":"WebPage","@id":"https://windmill-city.github.io//%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html"},"url":"https://windmill-city.github.io//%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/13/%E5%AE%8C%E5%85%A8Jekyll%E5%8C%96.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!--CSS Style Sheets-->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
+    <link href="/assets/css/viewer.css" rel="stylesheet">
+    <!--favicon-->
+    <link rel="icon" href="/assets/img/favicon.ico">
+    <!--js-->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/viewer.js"></script>
+    <script src="/assets/js/jquery-viewer.js"></script>
+    <script>
+        let Viewer;
+        $(document).ready(function () {
+            Viewer = $("#page-content").viewer();
+        })
+    </script>
+</head>
+
+<body>
+    <div id="nav-aside">
+    <ul>
+        <!--Home page-->
+        <li id="home"><a href="/">明理</a></li>
+        <!--Table of Pages-->
+        <ul id="pages">
+<li><a href="/category/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li>
+<li><a href="/category/stm32/">STM32</a></li>
+<li><a href="/category/scons/">SCons</a></li>
+<li><a href="/category/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/">图形界面</a></li>
+</ul>
+        <!--Table of Posts-->
+        <ul id="posts">
+            
+            
+            <li><a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/%E4%BD%BF%E7%94%A8GLFW%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3.html">使用GLFW构建一个窗口</a></li>
+            
+            
+            
+            <li><a href="/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/2023/01/29/Nuklear%E5%85%A5%E9%97%A8.html">Nuklear入门</a></li>
+            
+            
+            
+            <li><a href="/stm32/scons/2022/09/20/%E9%97%AA%E7%81%AF.html">CubeMX + SCons 闪灯实验</a></li>
+            
+            
+            
+            <li><a class="active" href="#top">手搓 Gitbook 主题</a></li>
+            <ul id="toc">
+<li><a href="#%E8%B5%B7%E5%9B%A0">起因</a></li>
+<li><a href="#%E9%87%8D%E6%96%B0%E6%9E%84%E5%BB%BA">重新构建</a></li>
+<li>
+<a href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2">本地部署</a><ul>
+<li><a href="#%E5%88%9B%E5%BB%BA">创建</a></li>
+<li>
+<a href="#%E9%83%A8%E7%BD%B2">部署</a><ul><li><a href="#%E6%B7%BB%E5%8A%A0-webrick">添加 <code class="language-plaintext highlighter-rouge">webrick</code></a></li></ul>
+</li>
+<li>
+<a href="#cleanup">Cleanup</a><ul><li><a href="#%E5%86%8D%E6%AC%A1%E6%9F%A5%E7%9C%8B%E6%95%88%E6%9E%9C">再次查看效果</a></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C">页面制作</a><ul>
+<li><a href="#%E4%B8%BB%E4%BD%93%E6%A1%86%E6%9E%B6">主体框架</a></li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#%E6%A8%AA%E5%90%91-meta">横向 Meta</a></li>
+<li><a href="#markdown-%E6%9C%AA%E5%A4%84%E7%90%86">Markdown 未处理?</a></li>
+<li><a href="#markdown-css">Markdown CSS</a></li>
+</ul>
+</li>
+<li>
+<a href="#%E7%9B%AE%E5%BD%95--%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA--%E5%89%8D%E5%90%8E%E9%A1%B5%E9%9D%A2">目录 + 顶部导航 + 前后页面</a><ul>
+<li><a href="#position-sticky-%E4%B8%8D%E7%94%9F%E6%95%88"><code class="language-plaintext highlighter-rouge">position: sticky</code> 不生效?</a></li>
+<li><a href="#%E5%A4%9A%E4%BD%99%E7%9A%84%E7%A9%BA%E6%A0%BC">多余的空格?</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B5%E5%86%85%E5%AF%BC%E8%88%AA">页内导航</a></li>
+<li><a href="#colored-diff">Colored diff</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7">图片放大</a></li>
+<li>
+<a href="#jekyll-plugins">Jekyll Plugins</a><ul>
+<li><a href="#jekyll-spaceship">Jekyll Spaceship</a></li>
+<li>
+<a href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9B%B8%E5%85%B3">搜索引擎相关</a><ul>
+<li><a href="#seo-tags">SEO Tags</a></li>
+<li><a href="#sitemap">Sitemap</a></li>
+<li>
+<a href="#%E6%9C%80%E5%90%8E%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4">最后修改时间</a><ul><li><a href="#%E6%9C%80%E5%90%8E%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E6%9C%89%E8%AF%AF">最后修改时间有误?</a></li></ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%88%86%E7%B1%BB%E7%9B%AE%E5%BD%95">分类目录</a></li>
+</ul>
+</li>
+<li>
+<a href="#github-action">Github Action</a><ul>
+<li><a href="#repo-settings">Repo Settings</a></li>
+<li><a href="#action">Action</a></li>
+</ul>
+</li>
+</ul>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/12/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">在本地测试个人网站</a></li>
+            
+            
+            
+            <li><a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/11/%E6%83%B3%E8%A6%81%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html">想要一个个人网站</a></li>
+            
+            
+        </ul>
+    </ul>
+</div>
+    <div id="nav-main">
+    <!--Nav-Top-->
+    <div id="nav-top">
+        <a href="#top">手搓 Gitbook 主题</a>
+    </div>
+    <div id="nav-page">
+        <!--Prev Page-->
+        <div id="nav-prev">
+            
+            <a href="/stm32/scons/2022/09/20/%E9%97%AA%E7%81%AF.html" aria-label="CubeMX + SCons 闪灯实验">
+                <i id="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <!--Page-->
+        <div id="page">
+    <!--Title-->
+    <h1>手搓 Gitbook 主题</h1>
+    <!--Metadata-->
+    <header id="meta">
+        <ul>
+            <!--Author-->
+            <li id="author">
+                Windmill-City
+            </li>
+            <!--Date-->
+            
+            <li id="date">
+                2022-09-13
+            </li>
+            
+            
+            
+            
+            <li id="last-modified">
+                2022-09-18
+            </li>
+            
+            <!--Categories-->
+            <ul id="categories">
+                
+                <li>
+                    <a href="/category/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99">个人网站</a>
+                </li>
+                
+            </ul>
+        </ul>
+    </header>
+    <!--Markdown Content-->
+    <section id="page-content" class="markdown-body">
+        <h2 id="起因">起因</h2>
+
+<p>图片不能点击放大!</p>
+
+<p>搜索资料发现, 需要修改不少 <code class="language-plaintext highlighter-rouge">HTML</code> 代码, 之前的 <code class="language-plaintext highlighter-rouge">Gitbook</code> 主题又太冗杂了, 想了想还是直接重写整个网站吧!</p>
+
+<h2 id="重新构建">重新构建</h2>
+
+<p>新方案采用 <code class="language-plaintext highlighter-rouge">Jekyll</code> + <code class="language-plaintext highlighter-rouge">Github Action</code> 来进行网站的部署</p>
+
+<h2 id="本地部署">本地部署</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Jekyll</code> 的安装过程见上一篇文章<code class="language-plaintext highlighter-rouge">在本地测试个人网站</code></p>
+
+<h3 id="创建">创建</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new blog
+<span class="nt">---</span>
+New jekyll site installed <span class="k">in </span>E:/Codes/blog
+</code></pre></div></div>
+
+<h3 id="部署">部署</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+<span class="nt">---</span>
+jekyll-4.2.2/lib/jekyll/commands/serve/servlet.rb:3:in <span class="sb">`</span>require<span class="s1">': cannot load such file -- webrick (LoadError)
+</span></code></pre></div></div>
+
+<p>emm…? 搜索了一下, 原来 <code class="language-plaintext highlighter-rouge">Ruby</code> 在 <code class="language-plaintext highlighter-rouge">3.0</code> 以后不再附带 <code class="language-plaintext highlighter-rouge">webrick</code> 了</p>
+
+<h4 id="添加-webrick">添加 <code class="language-plaintext highlighter-rouge">webrick</code>
+</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
+</code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+<span class="nt">---</span>
+Server address: http://127.0.0.1:4000/
+</code></pre></div></div>
+
+<p>这下正常了, 访问 <a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a> 查看页面效果
+<img src="/assets/InitalJekyll.png" alt="InitalJekyll"></p>
+
+<h3 id="cleanup">Cleanup</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tree <span class="se">\f</span>
+<span class="nt">---</span>
+blog
+├─assets
+├─_includes
+├─_layouts
+├─_sass
+│  .gitignore
+│  404.html
+│  Gemfile
+│  Gemfile.lock
+│  Index.md
+│  _config.yml
+</code></pre></div></div>
+
+<p>清理无用的文件</p>
+
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Site settings</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">明理</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">Windmill-City</span>
+<span class="na">email</span><span class="pi">:</span> <span class="s">1449182174@qq.com</span>
+<span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+  <span class="s">简单的规则构造出复杂的系统</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://windmill-city.github.io/"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Index.md</code></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">主页</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/</span>
+<span class="nn">---</span>
+
+<span class="gt">&gt;{{ site.description }}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Gemfile</code></p>
+
+<pre><code class="language-gem">source "https://rubygems.org"
+gem "jekyll", "~&gt; 4.2.2"
+group :jekyll_plugins do
+end
+
+# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+# and associated library.
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", "~&gt; 1.2"
+  gem "tzinfo-data"
+end
+
+# Performance-booster for watching directories on Windows
+gem "wdm", "~&gt; 0.1.1", :platforms =&gt; [:mingw, :x64_mingw, :mswin]
+
+# Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
+# do not have a Java counterpart.
+gem "http_parser.rb", "~&gt; 0.6.0", :platforms =&gt; [:jruby]
+
+# Webserver library
+gem "webrick", "~&gt; 1.7"
+</code></pre>
+
+<h4 id="再次查看效果">再次查看效果</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+<span class="nt">---</span>
+Server address: http://127.0.0.1:4000/
+</code></pre></div></div>
+
+<p><img src="/assets/PageAfterCleanup.png" alt="PageAfterCleanup"></p>
+
+<p>正确显示啦！接下来就是以此为基线进行 <code class="language-plaintext highlighter-rouge">Gitbook</code> 页面的制作了</p>
+
+<h2 id="页面制作">页面制作</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center" colspan="2">页面构成</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>侧栏</strong></td>
+      <td style="text-align: center"><strong>文章</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">搜索</td>
+      <td style="text-align: center">标题</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">目录</td>
+      <td style="text-align: center">Metadata</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">页面导航</td>
+      <td style="text-align: center">内容</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="主体框架">主体框架</h3>
+
+<p>先进行 <code class="language-plaintext highlighter-rouge">文章</code> 部分的制作</p>
+
+<p><code class="language-plaintext highlighter-rouge">home.html</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{ page.title }}·{{ site.title }}<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--Title--&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>{{ page. title }}<span class="nt">&lt;/h1&gt;</span>
+        <span class="c">&lt;!--Metadata--&gt;</span>
+        <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"meta"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul&gt;</span>
+                <span class="c">&lt;!--Author--&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"author"</span><span class="nt">&gt;</span>
+                    {{ page.author | default: site.author }}
+                <span class="nt">&lt;/li&gt;</span>
+                <span class="c">&lt;!--Date--&gt;</span>
+                {% if page.date %}
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"date"</span><span class="nt">&gt;</span>
+                    {{ page.date | date: "%Y-%m-%d" }}
+                <span class="nt">&lt;/li&gt;</span>
+                {% endif %}
+                <span class="c">&lt;!--Categories--&gt;</span>
+                <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"categories"</span><span class="nt">&gt;</span>
+                    {% for category in page.categories %}
+                    <span class="nt">&lt;li&gt;</span>
+                        {{ category }}
+                    <span class="nt">&lt;/li&gt;</span>
+                    {% endfor %}
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/header&gt;</span>
+        <span class="c">&lt;!--Markdown Content--&gt;</span>
+        <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+            {{ page.content }}
+        <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><img src="/assets/homeNoCss.png" alt="homeNoCss"></p>
+
+<p>嗯! 页面的主体结构出来了, 接下来为它附加 <code class="language-plaintext highlighter-rouge">CSS</code> 效果</p>
+
+<h3 id="css">CSS</h3>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_layouts/home.html
+</span><span class="gi">+++ b/_layouts/home.html
+</span><span class="p">@@ -3,6 +3,8 @@</span>
+
+ &lt;head&gt;
+     &lt;title&gt;手搓 Gitbook 主题·明理&lt;/title&gt;
+<span class="gi">+    &lt;!--CSS Style Sheets--&gt;
++    &lt;link rel="stylesheet" href="/assets/css/styles.css" /&gt;
+</span> &lt;/head&gt;
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">styles.sass</code></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+++ b/assets/css/styles.sass
+</span><span class="p">@@ -0,0 +1,3 @@</span>
+<span class="gi">+---
++---
++@import page
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">styles.sass</code> 作为所有 <code class="language-plaintext highlighter-rouge">scss</code> 文件的集合</p>
+
+<p>由于 <code class="language-plaintext highlighter-rouge">Front Matter</code> 的存在, 使用 <code class="language-plaintext highlighter-rouge">scss</code> 在格式化时会出问题, 这里使用 <code class="language-plaintext highlighter-rouge">sass</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">page.scss</code></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+++ b/_sass/page.scss
+</span><span class="p">@@ -0,0 +1,3 @@</span>
+<span class="gi">+.page {
++    background-color: #eee;
++}
+</span></code></pre></div></div>
+
+<p>这里先修改一下背景颜色作为测试</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/Index.md
+</span><span class="gi">+++ b/Index.md
+</span><span class="p">@@ -1,6 +1,8 @@</span>
+ ---
+ layout: home
+ title: 主页
+<span class="gi">+date: 2022-9-13
++categories: cate1 cate2
+</span> permalink: /
+ ---
+</code></pre></div></div>
+
+<p>为了方便调试, 添加了 <code class="language-plaintext highlighter-rouge">Metadata</code> 条目</p>
+
+<p><img src="/assets/CssTest.png" alt="CssTest"></p>
+
+<p>背景颜色发生了改变, 验证了 <code class="language-plaintext highlighter-rouge">scss</code> 文件的有效性</p>
+
+<h3 id="横向-meta">横向 Meta</h3>
+
+<p>接下来让 <code class="language-plaintext highlighter-rouge">Metadata</code> 横向排布</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+++ b/_sass/page.scss
+</span><span class="p">@@ -0,0 +1,25 @@</span>
+<span class="gi">+.page {
++    .meta {
++        ul {
++            margin-top: -0.6em;
++            padding: 0;
++            color: #999;
++
++            li {
++                display: inline-block;
++                margin-right: 8px;
++                padding-left: 12px;
++                border-left: 1px solid #EEE;
++            }
++
++            .author {
++                padding-left: 0;
++                border: none;
++            }
++
++            .categories {
++                display: inline-block;
++            }
++        }
++    }
++}
+</span></code></pre></div></div>
+
+<p><img src="/assets/Metadata-Horizontal.png" alt="Metadata-Horizontal"></p>
+
+<p>效果不错, 达到了预期目标</p>
+
+<h3 id="markdown-未处理">Markdown 未处理?</h3>
+
+<p>emm..? 怎么 <code class="language-plaintext highlighter-rouge">Markdown</code> 好像没有被处理?</p>
+
+<p>搜索发现, 使用 <code class="language-plaintext highlighter-rouge">page.content</code> 仅仅将 <code class="language-plaintext highlighter-rouge">Markdown Raw</code> 引入, 要引入处理后的应当使用 <code class="language-plaintext highlighter-rouge">content</code></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_layouts/home.html
+</span><span class="gi">+++ b/_layouts/home.html
+</span><span class="p">@@ -36,7 +36,7 @@</span>
+         &lt;/header&gt;
+         &lt;!--Markdown Content--&gt;
+         &lt;section class="content"&gt;
+<span class="gd">-            {{ page.content }}
+</span><span class="gi">+            {{ content }}
+</span>         &lt;/section&gt;
+     &lt;/div&gt;
+ &lt;/body&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/FixMarkdown.png" alt="FixMarkdown"></p>
+
+<p>可以看到已经是处理后的 <code class="language-plaintext highlighter-rouge">Markdown</code> 了</p>
+
+<h3 id="markdown-css">Markdown CSS</h3>
+
+<p>现在为 <code class="language-plaintext highlighter-rouge">Markdown Content</code> 附加样式表吧!</p>
+
+<p>不需要自己造轮子, <a href="https://github.com/sindresorhus/github-markdown-css">github-markdown-css</a> 这个项目直接从 <code class="language-plaintext highlighter-rouge">Github</code> 的 <code class="language-plaintext highlighter-rouge">CSS</code> 里面提取了 <code class="language-plaintext highlighter-rouge">Markdown</code> 相关部分, 直接偷就好了</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:sindresorhus/github-markdown-css.git
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">assets</code>-&gt;<code class="language-plaintext highlighter-rouge">css</code>&lt;-<code class="language-plaintext highlighter-rouge">github-markdown.css</code></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_layouts/home.html
+</span><span class="gi">+++ b/_layouts/home.html
+</span><span class="p">@@ -5,6 +5,7 @@</span>
+     &lt;title&gt;{{ page.title }}·{{ site.title }}&lt;/title&gt;
+     &lt;!--CSS Style Sheets--&gt;
+     &lt;link rel="stylesheet" href="/assets/css/styles.css" /&gt;
+<span class="gi">+    &lt;link rel="stylesheet" href="/assets/css/github-markdown.css" /&gt;
+</span> &lt;/head&gt;
+
+ &lt;body&gt;
+<span class="p">@@ -35,7 +36,7 @@</span>
+             &lt;/ul&gt;
+         &lt;/header&gt;
+         &lt;!--Markdown Content--&gt;
+<span class="gd">-        &lt;section class="content"&gt;
+</span><span class="gi">+        &lt;section class="markdown-body"&gt;
+</span>             {{ content }}
+         &lt;/section&gt;
+     &lt;/div&gt;
+</code></pre></div></div>
+
+<p>注意: <code class="language-plaintext highlighter-rouge">Markdown</code> 内容的类名要为 <code class="language-plaintext highlighter-rouge">markdown-body</code></p>
+
+<p><img src="/assets/GithubMarkdown.png" alt="GithubMarkdown"></p>
+
+<p><code class="language-plaintext highlighter-rouge">CSS</code> 应用成功!</p>
+
+<h2 id="目录--顶部导航--前后页面">目录 + 顶部导航 + 前后页面</h2>
+
+<p>将 <code class="language-plaintext highlighter-rouge">home.html</code> 拆分为多个文件, 放到 <code class="language-plaintext highlighter-rouge">_includes</code> 中</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+{% include head.html %}
+
+<span class="nt">&lt;body&gt;</span>
+    {% include nav-aside.html %}
+    {% include nav-main.html %}
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><img src="/assets/NavMain.png" alt="NavMain"></p>
+
+<p>Ref: <a href="https://www.w3.org/TR/css-flexbox-1/">CSS Flexible Box Layout Module Level 1</a></p>
+
+<p>整体采用 <code class="language-plaintext highlighter-rouge">Flexbox</code> 进行布局</p>
+
+<p>主要难点是把 <code class="language-plaintext highlighter-rouge">侧栏</code> \ <code class="language-plaintext highlighter-rouge">顶部导航栏</code> \ <code class="language-plaintext highlighter-rouge">页面箭头</code> 给固定住</p>
+
+<p><code class="language-plaintext highlighter-rouge">Flexbox</code> 在 <code class="language-plaintext highlighter-rouge">父元素</code> 脱离文档流时表现通常不符合预期, 具体算法见 <a href="https://www.w3.org/TR/css-flexbox-1/#line-sizing">Line Length Determination</a></p>
+
+<p>这意味着使用 <code class="language-plaintext highlighter-rouge">position: fix | absolute;</code> 将元素固定的方法是行不通的</p>
+
+<p>所以应该使用 <code class="language-plaintext highlighter-rouge">position: sticky</code> 配合 <code class="language-plaintext highlighter-rouge">top | bottom | left |right</code> 来进行元素的固定</p>
+
+<h3 id="position-sticky-不生效">
+<code class="language-plaintext highlighter-rouge">position: sticky</code> 不生效?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Flexbox</code>: <code class="language-plaintext highlighter-rouge">align-items</code> 的默认属性是 <code class="language-plaintext highlighter-rouge">stretch</code>, 这会导致元素在纵轴上拉伸</p>
+
+<p><img src="/assets/Stretched.png" alt="Stretched"></p>
+
+<p>箭头下方的空白是拉伸的结果, 观察到, 调试工具 <code class="language-plaintext highlighter-rouge">Computed</code> 中的 <code class="language-plaintext highlighter-rouge">height = 3032.02px</code></p>
+
+<p>这意味着这个元素是一直延伸到 <code class="language-plaintext highlighter-rouge">DOM</code> 底部的, 进而产生 <code class="language-plaintext highlighter-rouge">position: sticky</code> 不生效的假象</p>
+
+<p><img src="/assets/NoStretch.png" alt="NoStretch"></p>
+
+<p>为 <code class="language-plaintext highlighter-rouge">Flexbox</code> 设置 <code class="language-plaintext highlighter-rouge">align-items=flex-start</code>, 这时 <code class="language-plaintext highlighter-rouge">Computed</code> 中的 <code class="language-plaintext highlighter-rouge">height = 453px</code></p>
+
+<p>显然这才是正确的元素高度, 这时 <code class="language-plaintext highlighter-rouge">position: sticky</code> 也产生了固定元素的效果了</p>
+
+<h3 id="多余的空格">多余的空格?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Pages</code> 目录的生成过程中会产生额外的 <code class="language-plaintext highlighter-rouge">空格</code>, 导致 <code class="language-plaintext highlighter-rouge">CSS</code> 的 <code class="language-plaintext highlighter-rouge">:empty</code> 伪类不生效</p>
+
+<p><img src="/assets/ExtraWhiteSpace.png" alt="ExtraWhiteSpace"></p>
+
+<p>在 <code class="language-plaintext highlighter-rouge">{%</code>..<code class="language-plaintext highlighter-rouge">%}</code> 前后添加空格清除标记 <code class="language-plaintext highlighter-rouge">-</code> 就可以了!</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_layouts/home.html
+</span><span class="gi">+++ b/_layouts/home.html
+</span><span class="p">@@ -15,13 +15,13 @@</span>
+             &lt;li class="home"&gt;&lt;a href="/"&gt;{{ site.title }}&lt;/a&gt;&lt;/li&gt;
+             &lt;!--Table of Pages--&gt;
+             &lt;ul class="pages"&gt;
+<span class="gd">-                {% for _page in site.pages %}
+</span><span class="gi">+                {%- for _page in site.pages -%}
+</span>                 {% comment %}Skip page with empty title{% endcomment %}
+<span class="gd">-                {% unless _page.title %}{% continue %}{% endunless %}
+</span><span class="gi">+                {%- unless _page.title -%}{% continue %}{%- endunless -%}
+</span>                 {% comment %}Skip home page{% endcomment %}
+<span class="gd">-                {% if _page.url == "/" %}{% continue %}{% endif %}
+</span><span class="gi">+                {%- if _page.url == "/" -%}{% continue %}{%- endif -%}
+</span>                 &lt;li&gt;&lt;a href="{{ _page.url }}"&gt;{{ _page.title }}&lt;/a&gt;&lt;/li&gt;
+<span class="gd">-                {% endfor %}
+</span><span class="gi">+                {%- endfor -%}
+</span>             &lt;/ul&gt;
+             &lt;!--Table of Posts--&gt;
+             &lt;ul class="posts"&gt;
+</code></pre></div></div>
+
+<h2 id="页内导航">页内导航</h2>
+
+<p><a href="https://github.com/allejo/jekyll-toc">jekyll-toc</a></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:allejo/jekyll-toc.git
+</code></pre></div></div>
+
+<p>复制 <code class="language-plaintext highlighter-rouge">_includes/toc.html</code> 到 <code class="language-plaintext highlighter-rouge">_includes</code> 中</p>
+
+<p>在想要增加页内导航的地方放上 <code class="language-plaintext highlighter-rouge">{% include toc.html html=content %}</code> 就可以了</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span> <span class="p">{</span>
+    <span class="na">scroll-behavior</span><span class="p">:</span> <span class="n">smooth</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>增加平滑滚动</p>
+
+<p><img src="/assets/ToC.png" alt="ToC"></p>
+
+<h2 id="colored-diff">Colored diff</h2>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.gd</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">236</span><span class="o">,</span> <span class="m">236</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.gi</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">234</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">234</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>为 <code class="language-plaintext highlighter-rouge">diff</code> 增加高亮</p>
+
+<h2 id="图片放大">图片放大</h2>
+
+<p><a href="https://github.com/fengyuanchen/jquery-viewer">jquery-viewer</a></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>jquery-viewer jquery viewerjs
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">*/dist</code>-&gt;<code class="language-plaintext highlighter-rouge">assets/js|css</code></p>
+
+<p>将 <code class="language-plaintext highlighter-rouge">jquery.js</code> &amp; <code class="language-plaintext highlighter-rouge">viewer.js</code> &amp; <code class="language-plaintext highlighter-rouge">jquery-viewer.js</code> &amp; <code class="language-plaintext highlighter-rouge">viewer.css</code> 复制到指定文件夹</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span>  <span class="na">href=</span><span class="s">"/assets/css/viewer.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/viewer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/jquery-viewer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>添加引用</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">let</span> <span class="nx">Viewer</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">Viewer</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#page-content</span><span class="dl">"</span><span class="p">).</span><span class="nx">viewer</span><span class="p">();</span>
+    <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>初始化, 扫描 <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> 内所有的 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 标签</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">img</span> <span class="p">{</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="n">zoom-in</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>设置鼠标光标</p>
+
+<p><img src="/assets/ImgViewer.png" alt="ImgViewer"></p>
+
+<p>点击即可放大图片</p>
+
+<h2 id="jekyll-plugins">Jekyll Plugins</h2>
+
+<h3 id="jekyll-spaceship">Jekyll Spaceship</h3>
+
+<p><a href="https://github.com/jeffreytse/jekyll-spaceship">jekyll-spaceship</a></p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/Gemfile
+</span><span class="gi">+++ b/Gemfile
+</span><span class="p">@@ -1,6 +1,7 @@</span>
+ source "https://rubygems.org"
+ gem "jekyll", "~&gt; 4.2.2"     
+ group :jekyll_plugins do     
+<span class="gi">+  gem 'jekyll-spaceship'     
+</span> end
+</code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+<span class="nt">---</span>
+Bundle <span class="nb">complete</span><span class="o">!</span> 7 Gemfile dependencies, 38 gems now installed.
+</code></pre></div></div>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_config.yml
+</span><span class="gi">+++ b/_config.yml
+</span><span class="p">@@ -12,3 +12,6 @@</span> defaults:
+       path: ""
+     values:
+       layout: "post"
+<span class="gi">+
++plugins:
++  - jekyll-spaceship
+</span></code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+<span class="nt">---</span>
+  Jekyll Spaceship: 🚀 Jekyll-Spaceship 0.10.2
+  Jekyll Spaceship: 🎉 A Jekyll plugin to provide powerful supports.
+  Jekyll Spaceship: 👉 https://github.com/jeffreytse/jekyll-spaceship
+  Jekyll Spaceship: 🗂  use table-processor
+  Jekyll Spaceship: 🗂  use mathjax-processor
+  Jekyll Spaceship: 🗂  use plantuml-processor
+  Jekyll Spaceship: 🗂  use mermaid-processor
+  Jekyll Spaceship: 🗂  use polyfill-processor
+  Jekyll Spaceship: 🗂  use media-processor
+  Jekyll Spaceship: 🗂  use emoji-processor
+  Jekyll Spaceship: 🗂  use element-processor
+</code></pre></div></div>
+
+<p>配置完成</p>
+
+<h3 id="搜索引擎相关">搜索引擎相关</h3>
+
+<h4 id="seo-tags">SEO Tags</h4>
+
+<p><a href="https://github.com/jekyll/jekyll-seo-tag">jekyll-seo-tag</a></p>
+
+<p>SEO(Search Engine Optimization) 顾名思义就是优化搜索引擎的索引效果, 提高网站访问量</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_includes/head.html
+</span><span class="gi">+++ b/_includes/head.html
+</span><span class="p">@@ -2,6 +2,8 @@</span>
+     &lt;meta charset="utf-8"&gt;
+     &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
++    {% seo %}
+<span class="gi">+
+</span>     &lt;!--CSS Style Sheets--&gt;
+     &lt;link rel="stylesheet" href="/assets/css/styles.css" /&gt;
+     &lt;link rel="stylesheet" href="/assets/css/github-markdown.css" /&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/SEO-Tags.png" alt="SEO-Tags"></p>
+
+<p>可以看到已经增加了 <code class="language-plaintext highlighter-rouge">SEO-Tags</code> 了</p>
+
+<h4 id="sitemap">Sitemap</h4>
+
+<p><a href="https://github.com/jekyll/jekyll-sitemap">jekyll-sitemap</a></p>
+
+<p>Sitemap, 通知搜索引擎有哪些网页可供抓取</p>
+
+<p>观察到 <code class="language-plaintext highlighter-rouge">_site</code> 下生成了 <code class="language-plaintext highlighter-rouge">robots.txt</code> 和 <code class="language-plaintext highlighter-rouge">sitemap.xml</code></p>
+
+<h4 id="最后修改时间">最后修改时间</h4>
+
+<p><a href="https://github.com/gjtorikian/jekyll-last-modified-at">jekyll-last-modified-at</a></p>
+
+<p>提供网页最后一次修改的时间, 搜索引擎根据这一信息确定是否需要更新索引</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_includes/page.html
+</span><span class="gi">+++ b/_includes/page.html
+</span><span class="p">@@ -14,6 +14,11 @@</span>
+                 {{ page.date | date: "%Y-%m-%d" }}
+             &lt;/li&gt;
+             {% endif %}
+<span class="gi">+            {% assign lastMod = page.last_modified_at | date: "%Y-%m-%d" %}
++            {% assign publish = page.date | date: "%Y-%m-%d" %}
++            {% if publish != lastMod %}
++            &lt;li id="last-modified"&gt;
++                {{ lastMod }}
++            &lt;/li&gt;
+</span>             &lt;!--Categories--&gt;
+</code></pre></div></div>
+
+<p>增加最后修改时间显示</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_sass/page.scss
+</span><span class="gi">+++ b/_sass/page.scss
+</span><span class="p">@@ -21,6 +21,11 @@</span>
+                 border: none;
+             }
+
++            .last-modified::before {
+<span class="gi">+                content: '\f044';
++                font-family: "FontAwesome";
++            }
++
+</span>             .categories {
+                 display: inline-block;
+             }
+</code></pre></div></div>
+
+<p>图标的 <code class="language-plaintext highlighter-rouge">Unicode</code> 可在 <code class="language-plaintext highlighter-rouge">FontAwesome</code> 的网站查到</p>
+
+<p><img src="/assets/LastModified.png" alt="LastModified"></p>
+
+<h5 id="最后修改时间有误">最后修改时间有误?</h5>
+
+<p>本地查看正常, 但在 <code class="language-plaintext highlighter-rouge">Github Action</code> 上的却是部署时的日期</p>
+
+<p>这是因为 <code class="language-plaintext highlighter-rouge">checkout action</code> 仅仅进行了 <a href="https://github.com/actions/checkout">shallow clone</a></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span> <span class="s">a/.github/workflows/build-jekyll.yml</span>
+<span class="s">+++ b/.github/workflows/build-jekyll.yml</span>
+<span class="err">@@</span> <span class="s">-10,6 +10,8 @@ jobs</span><span class="err">:</span>
+     <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+     <span class="na">steps</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+<span class="na">+        with</span><span class="pi">:</span>
+<span class="na">+          fetch-depth</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0'</span>
+
+       <span class="c1"># Use GitHub Actions' cache to cache dependencies on servers</span>
+       <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/cache@v2</span>
+</code></pre></div></div>
+
+<p>修改为 <code class="language-plaintext highlighter-rouge">deep clone</code></p>
+
+<p>本地查看正常, 但在 <code class="language-plaintext highlighter-rouge">Github Action</code> 上的日期却提前一天</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/_config.yml
+</span><span class="gi">+++ b/_config.yml
+</span><span class="p">@@ -22,4 +22,6 @@</span> plugins:
+<span class="gi">+
++timezone: Asia/Shanghai
+</span></code></pre></div></div>
+
+<p>设置时区</p>
+
+<h3 id="分类目录">分类目录</h3>
+
+<p><a href="https://github.com/jekyll/jekyll-archives">jekyll-archives</a></p>
+
+<p>自动生成分类目录</p>
+
+<p><code class="language-plaintext highlighter-rouge">archive.html</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+{% include head.html %}
+
+<span class="nt">&lt;body&gt;</span>
+    {% include nav-aside.html %}
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nav-main"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--Nav-Top--&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"nav-top"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#top"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"archive"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"posts"</span> <span class="na">class=</span><span class="s">"markdown-body"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h1&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    {% for post in page.posts %}
+                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"date"</span><span class="nt">&gt;</span>{{ post.date | date: "%Y-%m-%d" }}<span class="nt">&lt;/span&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"link"</span> <span class="na">href=</span><span class="s">"{{ post.url | relative_url }}"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                    {% endfor %}
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">archive.scss</code></p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">#archive</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+
+    <span class="nn">#posts</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+        <span class="c1">// Extra space for showing the last item</span>
+        <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/assets/CateIndex.png" alt="CateIndex"></p>
+
+<h2 id="github-action">Github Action</h2>
+
+<h3 id="repo-settings">Repo Settings</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Repo</code>-&gt;<code class="language-plaintext highlighter-rouge">Settings</code>-&gt;<code class="language-plaintext highlighter-rouge">Pages</code>-&gt;<code class="language-plaintext highlighter-rouge">Build and Deployment</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">Source</code> = <code class="language-plaintext highlighter-rouge">Deploy from a branch</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">Branch</code> = <code class="language-plaintext highlighter-rouge">gh-pages</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">/root</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>可以在下面的 <code class="language-plaintext highlighter-rouge">Action</code> 运行一次之后再配置, 让它来生成 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支</p>
+
+<h3 id="action">Action</h3>
+
+<p><a href="https://github.com/jeffreytse/jekyll-deploy-action">jekyll-deploy-action</a></p>
+
+<p>参照文档添加 <code class="language-plaintext highlighter-rouge">build-jekyll.yml</code></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy to Github Pages</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build_and_deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+
+      <span class="c1"># Use GitHub Actions' cache to cache dependencies on servers</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/cache@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">vendor/bundle</span>
+          <span class="na">key</span><span class="pi">:</span> <span class="s">${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}</span>
+          <span class="na">restore-keys</span><span class="pi">:</span> <span class="pi">|</span>
+            <span class="s">${{ runner.os }}-gems-</span>
+
+      <span class="c1"># Use GitHub Deploy Action to build and deploy to Github</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">jeffreytse/jekyll-deploy-action@v0.4.0</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">provider</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github"</span>
+          <span class="na">token</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+</code></pre></div></div>
+
+<p>配置完成</p>
+
+<p><a href="https://docs.github.com/en/actions/security-guides/automatic-token-authentication">Automatic token authentication</a>
+<code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> 是在 <code class="language-plaintext highlighter-rouge">Workflow</code> 运行时自动分配的, 不需要配置</p>
+
+    </section>
+</div>
+        <!--Next Page-->
+        <div id="nav-next">
+            
+            <a href="/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/2022/09/12/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.html" aria-label="在本地测试个人网站">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
